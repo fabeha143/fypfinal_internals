@@ -10,7 +10,7 @@
         <div class="row clearfix">
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="info-box-4 hover-zoom-effect">
-                    <div class="icon"><a href="{{ url('attendant/primary/patientlist') }}"> <i class="zmdi zmdi-account col-blue"></i></a></div>
+                    <div class="icon"><a href="{{ url('/attendant/patientlist') }}"> <i class="zmdi zmdi-account col-blue"></i></a></div>
                     <div class="content">
                         <div class="text">Primary Wards</div>
                         <div class="number"></div>
