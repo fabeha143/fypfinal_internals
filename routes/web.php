@@ -112,7 +112,9 @@ Route::get('/login', [App\Http\Controllers\loginController::class,'login'])->nam
     Route::get('/attendant/dashboard', [App\Http\Controllers\attendantdashController::class, 'index'])->name('/attendant/dashboard')->middleware('AuthCheck');
     Route::post('/attendantdashstore/{id}', [App\Http\Controllers\attendantdashController::class, 'store'])->name('attendantdashstore');
 
-    Route::get('/attendant/primary/patientlist', [App\Http\Controllers\attendantdashController::class, 'showprimary'])->name('/attendant/primary/patientlist')->middleware('AuthCheck');
+    Route::get('/attendant/primary/patientlist/{id}', [App\Http\Controllers\attendantdashController::class, 'showprimary'])->name('/attendant/primary/patientlist')->middleware('AuthCheck');
+    
+    Route::get('/attendant/patientlist', [App\Http\Controllers\attendantdashController::class, 'patientList'])->name('/attendant/patientlist')->middleware('AuthCheck');
     
     ///////////////////////////////Attendant/////////////////////////////////////////////
     

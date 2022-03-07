@@ -23,5 +23,12 @@ class attendant_assigns extends Model
     {
         return $this->belongsTo(ward::class, 'ward', 'id');
     }
-
+    public function medicines()
+    {
+        return $this->belongsTo(medicines::class, 'medicines', 'id');
+    }
+    public function patients()
+    {
+        return $this->belongsTo(patient::class, 'patient_id', 'id');
+    }
 }

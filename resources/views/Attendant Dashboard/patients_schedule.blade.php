@@ -18,17 +18,6 @@
                             <thead>
                                 <tr>
                                     <th>Patient</th>
-                                    <th>Medicine</th>
-                                    <th>Dose Frequency</th>
-                                    <th>Unit</th>
-                                    <th>Date</th>
-                                    <th>Morning Time</th>
-                                    <th>Evening Time</th>
-                                    <th>Night Time</th>
-                                    <th>Morning Dose Giving</th>
-                                    <th>Evening Dose Giving</th>
-                                    <th>Night Dose Giving</th>
-                                    <th>Comment</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -36,18 +25,10 @@
                             @if(count($query))
                                 @foreach($query as $list)
                                     <tr>
-                                    <td>{{ $list->patient_id}}</td>
-                                    <td>{{ $list->medicines}}</td>
-                                    <td>{{ $list->dose_frequency}}</td>
-                                    <td>{{ $list->unit}}</td>
-                                    <td>{{ $list->date}}</td>
-                                    <td>{{ $list->morning_time}}</td>
-                                    <td>{{ $list->evening_time}}</td>
-                                    <td>{{ $list->night_time}}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>{{ $list->comment}}</td>
+                                    <td>{{ $list->id}}</td>
+                                    <td>
+                                    <a class="btn btn-primary btn-sm" href="{{ url('/attendant/primary/patientlist',$list->id)}}">View Prescription Schedule</a>
+                                    </td>
                                     <tr>
                                 @endforeach
                             @else

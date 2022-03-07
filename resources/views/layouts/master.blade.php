@@ -62,13 +62,7 @@
     <aside id="leftsidebar" class="sidebar"> 
         <!-- User Info -->
         <div class="user-info">
-            @if($LoggedUserInfo->role_id == 'admin')
-                <div class="admin-image"> <img src="/images/admin.png" alt=""></div>
-            @elseif($LoggedUserInfo->role_id == 'doctor')
-                <div class="admin-image"> <img src="/images/doctor.png" alt=""></div>
-            @elseif($LoggedUserInfo->role_id == 'attendant')
-                <div class="admin-image"> <img src="/images/immigration.png" alt=""></div>
-            @endif
+            
             <div class="admin-action-info"><span>Welcome</span>
                 <h3>{{$data->username}}</h3>
                 
