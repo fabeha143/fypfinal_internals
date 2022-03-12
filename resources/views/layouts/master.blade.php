@@ -99,6 +99,8 @@
                 </li>
                 <li id="btnactive"><a href="{{ url('/wards') }}"><i class="zmdi zmdi-account-circle"></i><span>Wards</span> </a>
                 </li>
+                <li id="btnactive"><a href="{{ url('/shift') }}" ><i class="zmdi zmdi-account-circle"></i><span>Shifts</span> </a>
+                <li id="btnactive"><a href="{{ url('/assignedshift') }}" ><i class="zmdi zmdi-account-circle"></i><span>Shfit Assigning</span> </a>
                 <li id="btnactive"><a href="{{ url('/medicine') }}"><i class="zmdi zmdi-account-circle"></i><span>Medicines</span> </a>
                 </li>
                 <li id="btnactive"><a href="{{ url('/medicinesCategory') }}"><i class="zmdi zmdi-account-circle"></i><span>Medicines Category</span> </a>

@@ -57,8 +57,20 @@
                             </tbody>
                         </table>
                     </div>
+                    {{ Form::open(array('url' =>  '/attendant/morning/done','method' => 'post' , 'class' => 'body')) }}
+                        <p>Dose Track</p>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ Form::label('morning_time','Morning Dose Time')}}
+                                    <button type="submit" class="btn btn-raised g-bg-cyan">Done</button>
+                                </div>
+                            </div> 
+                        </div>
+                    {{ Form::close() }}
                 </div>
-            </div>
+
+            
         </div>
     </div>
 </section>

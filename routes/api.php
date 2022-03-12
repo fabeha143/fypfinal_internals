@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('employee','ApiController@employee');
+Route::get('/login', 'ApiController@login')->name('/login');
+Route::post('/login/check','ApiController@check');
+
+
+
+
+
+
+Route::get('doctor','ApiController@doctor');

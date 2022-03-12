@@ -58,6 +58,8 @@ Route::get('/login', [App\Http\Controllers\loginController::class,'login'])->nam
     Route::resource('doseschedule','doselist')->middleware('AuthCheck');
     Route::resource('wards','wardController')->middleware('AuthCheck');
     Route::resource('schedule','attendantSchedule')->middleware('AuthCheck');
+    Route::resource('shift','shiftController')->middleware('AuthCheck');
+    Route::resource('assignedshift','assign_shift')->middleware('AuthCheck');
 
     Route::get('/register',[App\Http\Controllers\loginController::class,'register'])->name('register')->middleware('AuthCheck');
     Route::post('/register/save',[App\Http\Controllers\loginController::class,'save'])->name('/register/save')->middleware('AuthCheck');
@@ -114,9 +116,10 @@ Route::get('/login', [App\Http\Controllers\loginController::class,'login'])->nam
 
     Route::get('/attendant/primary/patientlist/{id}', [App\Http\Controllers\attendantdashController::class, 'showprimary'])->name('/attendant/primary/patientlist')->middleware('AuthCheck');
 
-    
-    
+
     Route::get('/attendant/patientlist', [App\Http\Controllers\attendantdashController::class, 'patientList'])->name('/attendant/patientlist')->middleware('AuthCheck');
+
+    Route::post('/attendant/morning/done', [App\Http\Controllers\attendantdashController::class, 'morning_done'])->name('/attendant/morning/done')->middleware('AuthCheck');
     
     ///////////////////////////////Attendant/////////////////////////////////////////////
     

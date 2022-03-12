@@ -20,7 +20,7 @@
 					</div>
 
                 
-            <div class="body table-responsive">
+                <div class="body table-responsive">
                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                         <thead>
                             <tr>
@@ -56,7 +56,7 @@
                             @endif
                         </tbody>
                     </table>
-                </div>
+            </div>
                 {{ Form::open(array('url' => route('InpatientPrescriptioncreate'), 'method' => 'post' , 'class' => 'body')) }}
                 <p>Add Prescription Details </p>
                     <div class="row clearfix">

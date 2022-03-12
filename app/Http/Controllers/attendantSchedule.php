@@ -6,6 +6,7 @@ use App\Models\attendant_assigns;
 use Illuminate\Http\Request;
 use App\Models\employee;
 use App\Models\ward;
+use DB;
 
 class attendantSchedule extends Controller
 {
@@ -16,6 +17,9 @@ class attendantSchedule extends Controller
      */
     public function index()
     {
+        // $query = DB::table('employee')
+        // ->join('assign_shifts', 'shifts.id', '=', 'assign_shifts.shift');
+
         $schedules = attendant_assigns::all();
         return view('AdminPanel/Dose Scheduling/show_schedule',compact('schedules'));
     }
