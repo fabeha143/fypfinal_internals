@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\patient;
 use App\Models\doctor;
 use App\Models\ward;
+use App\Models\beds;
 use App\Models\departments;
 use Illuminate\Http\Request;
 
@@ -56,8 +57,16 @@ class PatientController extends Controller
         {
             $wardnamelist[$ward->id] = $ward->ward_name;
         }
+
+        //for beds
+        $bedsname = beds::select('id','bed_name')->get();
+        $beds = array();
+        foreach( $bedsname as $bed )
+        {
+            $beds[$bed->id] = $bed->bed_name;
+        }
         
-        return view('AdminPanel/patient/add_patient',compact('doctorName','departname','wardnamelist'));
+        return view('AdminPanel/patient/add_patient',compact('doctorName','departname','wardnamelist','beds'));
  
     }
 
@@ -86,6 +95,7 @@ class PatientController extends Controller
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:11',
             'doctor' => 'required',
             'department' => 'required',
+            'bed'=>'required',
             'status' => 'required',
             
         ],[],[
@@ -105,6 +115,7 @@ class PatientController extends Controller
             'phone' => 'phone',
             'doctor' => 'doctor',
             'department' => 'department',
+            'bed'=>'bed',
             'status' => 'status',
         ]);
         patient::create([
@@ -124,6 +135,7 @@ class PatientController extends Controller
             'ward' => $request->ward,
             'doctor' => $request->doctor,
             'department' => $request->department,
+            'bed' =>$request->bed,
             'status' => $request->status,
         ]);
         return redirect(route('patient.index'));
@@ -165,7 +177,25 @@ class PatientController extends Controller
             $department_data[$departments->id] = $departments->dep_name; 
         }
 
-        return view('AdminPanel/patient/edit_patient',compact('patient_edit','department_data','doctorName') );
+         //for ward foreign key
+         $wardsname = ward::select('id','ward_name')->get();
+        
+         $wardnamelist = array();
+         foreach( $wardsname as $ward )
+         {
+             $wardnamelist[$ward->id] = $ward->ward_name;
+         }
+        
+
+        //for bed edit
+        $bedsname = beds::select('id','bed_name')->get();
+        $beds = array();
+        foreach( $bedsname as $bed )
+        {
+            $beds[$bed->id] = $bed->bed_name;
+        }
+
+        return view('AdminPanel/patient/edit_patient',compact('patient_edit','department_data','doctorName','beds','wardnamelist') );
     }
     /**
      * Update the specified resource in storage.
@@ -179,41 +209,61 @@ class PatientController extends Controller
         $request->validate([
             'Fname' => 'required',
             'lname' => 'required',
+            'guradian_name' => 'required',
+            'guradian_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:11',
             'date_of_birth' => 'required',
             'addmission_date' => 'required',
             'email' => 'required|email',
             'gender' => 'required',
             'pat_category' => 'required',
+            'pat_case' => 'required',
+            'pat_symptoms' => 'required',
+            'ward' => 'required',
             'address' => 'required',
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:11',
             'doctor' => 'required',
             'department' => 'required',
+            'bed'=>'required',
             'status' => 'required',
             
         ],[],[
             'Fname' => 'first name',
             'lname' => 'last name',
+            'guradian_name' => 'Guardian Name',
+            'guradian_phone' => 'Guardian Phone',
             'date_of_birth' => 'date of birth',
             'addmission_date' => 'addmission date',
             'email' => 'email',
             'gender' => 'gender',
             'pat_category' => 'patient category',
+            'pat_case' => 'Case',
+            'pat_symptoms' => 'Symptoms',
             'address' => 'address',
+            'ward' => 'Ward Name',
             'phone' => 'phone',
             'doctor' => 'doctor',
             'department' => 'department',
+            'bed'=>'bed',
             'status' => 'status',
         ]);
         patient::where('id' , $id)->update([
             'pat_fname' => $request->Fname,
             'pat_lname' => $request->lname,
+            'guradian_name' => $request->guradian_name,
+            'guradian_phone' => $request->guradian_phone,
             'pat_phone' => $request->phone,
             'pat_admission_date' => $request->addmission_date,
             'pat_gender' => $request->gender,
             'pat_category' => $request->pat_category,
+            'pat_case' =>  $request->pat_case,
+            'pat_symptoms' => $request->pat_symptoms,
             'pat_email' => $request->email,
             'pat_address' => $request->address,
             'pat_date_of_birth' => $request->date_of_birth,
+            'ward' => $request->ward,
+            'doctor' => $request->doctor,
+            'department' => $request->department,
+            'bed' =>$request->bed,
             'status' => $request->status,
         ]);
         return redirect(route('patient.index'));

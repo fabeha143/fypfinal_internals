@@ -139,6 +139,12 @@
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="form-group drop-custum">
+                                {{ Form::select('bed',$beds,'null',['class'=> 'form-control' , 'placeholder' => 'Please Select Bed' ] )}}
+                                </div>
+                                <span class="text-danger">@error('bed'){{ $message }} @enderror</span>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="form-group drop-custum">
                                 {{ Form::select('status',array('Active' => 'Active' , 'In Active' => 'In Active'),'null',['class'=> 'form-control' , 'placeholder' => 'Please Select Status' ] )}}
                                 </div>
                                 <span class="text-danger">@error('status'){{ $message }} @enderror</span>

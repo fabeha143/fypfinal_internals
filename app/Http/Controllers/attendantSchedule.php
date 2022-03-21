@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\attendant_assigns;
+use App\Models\assign_shifts;
 use Illuminate\Http\Request;
 use App\Models\employee;
 use App\Models\ward;
+use DateTime;
 use DB;
 
 class attendantSchedule extends Controller
@@ -17,9 +19,6 @@ class attendantSchedule extends Controller
      */
     public function index()
     {
-        // $query = DB::table('employee')
-        // ->join('assign_shifts', 'shifts.id', '=', 'assign_shifts.shift');
-
         $schedules = attendant_assigns::all();
         return view('AdminPanel/Dose Scheduling/show_schedule',compact('schedules'));
     }
@@ -34,6 +33,7 @@ class attendantSchedule extends Controller
         //for employee
         $items = employee::select('id','emp_fname')->where('role','Attendant')->get();
         $employee_name = array();
+
         foreach( $items as $item )
         {
             $employee_name[$item->id] = $item->emp_fname;
@@ -141,7 +141,7 @@ class attendantSchedule extends Controller
                 'attendant_secondary' => $request->attendant_secondary,
                 'ward' => $request->ward,
             ]);
-        return redirect(route('schedule.index'));
+        return redirect(route('scheduleshow.index'));
     }
 
     /**
@@ -153,6 +153,6 @@ class attendantSchedule extends Controller
     public function destroy($id)
     {
         attendant_assigns::where('id' , $id)->delete();
-        return redirect(route('schedule.index'));
+        return redirect(route('scheduleshow.index'));
     }
 }

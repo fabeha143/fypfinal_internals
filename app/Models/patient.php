@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class patient extends Model
 {
     use HasFactory;
-    protected $fillable = ['pat_fname','pat_lname','guradian_name','guradian_phone','pat_phone','pat_admission_date','pat_gender','pat_category','pat_case','pat_symptoms','pat_email','pat_address','pat_date_of_birth','ward','doctor','department','status'];
+    protected $fillable = ['pat_fname','pat_lname','guradian_name','guradian_phone','pat_phone','pat_admission_date','pat_gender','pat_category','pat_case','pat_symptoms','pat_email','pat_address','pat_date_of_birth','ward','doctor','department','status','bed'];
     public function wards()
     {
         return $this->belongsTo(ward::class, 'ward', 'id');
@@ -20,6 +20,10 @@ class patient extends Model
     public function doctors()
     {
         return $this->belongsTo(doctor::class, 'doctor', 'id');
+    }
+    public function beds()
+    {
+        return $this->belongsTo(beds::class, 'bed', 'id');
     }
 }
 

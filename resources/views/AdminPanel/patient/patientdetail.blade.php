@@ -42,6 +42,7 @@
                                     <th>Date of birth</th>
                                     <th>Doctor</th>
                                     <th>Department</th>
+                                    <th>Bed</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -66,6 +67,7 @@
                                         <td>{{ $list->pat_date_of_birth}}</td>
                                         <td>{{ $list->doctors->doc_fname}}</td>
                                         <td>{{ $list->departments->dep_name}}</td>
+                                        <td>{{ $list->beds->bed_name}}</td>
                                         <td>{{ $list->status}}</td>
                                         <td class="d-flex justify-content-center">
                                             {!! Form::open(array('url' => route('patient.edit', ['patient' => $list->id]), 'method' => 'get')) !!}

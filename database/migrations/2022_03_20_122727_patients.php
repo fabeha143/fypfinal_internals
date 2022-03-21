@@ -32,6 +32,7 @@ class Patients extends Migration
             $table->foreignId('doctor')->constrained('doctors')->onDelete('cascade');
             $table->foreignId('department')->constrained('departments')->onDelete('cascade');
             $table->foreignId('ward')->constrained('wards')->onDelete('cascade');
+            $table->foreignId('bed')->constrained('beds')->onDelete('cascade');
             $table->string('status');
             $table->timestamps();
         });

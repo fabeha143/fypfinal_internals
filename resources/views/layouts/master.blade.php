@@ -99,17 +99,21 @@
                 </li>
                 <li id="btnactive"><a href="{{ url('/wards') }}"><i class="zmdi zmdi-account-circle"></i><span>Wards</span> </a>
                 </li>
+                <li id="btnactive"><a href="{{ url('/bedcategory') }}"><i class="zmdi zmdi-account-circle"></i><span>Bed Category</span> </a>
+                </li>
+                <li id="btnactive"><a href="{{ url('/bed') }}"><i class="zmdi zmdi-account-circle"></i><span>Bed</span> </a>
+                </li>
                 <li id="btnactive"><a href="{{ url('/shift') }}" ><i class="zmdi zmdi-account-circle"></i><span>Shifts</span> </a>
                 <li id="btnactive"><a href="{{ url('/assignedshift') }}" ><i class="zmdi zmdi-account-circle"></i><span>Shfit Assigning</span> </a>
                 <li id="btnactive"><a href="{{ url('/medicine') }}"><i class="zmdi zmdi-account-circle"></i><span>Medicines</span> </a>
                 </li>
                 <li id="btnactive"><a href="{{ url('/medicinesCategory') }}"><i class="zmdi zmdi-account-circle"></i><span>Medicines Category</span> </a>
                 </li>
-                <li id="btnactive"><a href="{{ url('/doseschedule') }}" ><i class="zmdi zmdi-account-circle"></i><span>Dose Schedule</span> </a>
+                <li id="btnactive"><a href="{{ url('/schedule') }}" ><i class="zmdi zmdi-account-circle"></i><span>Dose Schedule</span> </a>
                 </li>
-                <li id="btnactive"><a href="{{ url('/schedule') }}" ><i class="zmdi zmdi-account-circle"></i><span>Create Schedule</span> </a>
+                <li id="btnactive"><a href="{{ url('/shifts_assigned/see') }}" ><i class="zmdi zmdi-account-circle"></i><span>Create Schedule</span> </a>
                 </li>
-                <li id="btnactive"><a href="{{ url('/schedule') }}" ><i class="zmdi zmdi-account-circle"></i><span>Create Schedule</span> </a>
+                <li id="btnactive"><a href="{{ url('/shifts_assigned/see') }}" ><i class="zmdi zmdi-account-circle"></i><span>Create Schedule</span> </a>
                 </li>
                 
             </ul>

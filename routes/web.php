@@ -57,9 +57,19 @@ Route::get('/login', [App\Http\Controllers\loginController::class,'login'])->nam
     Route::resource('medicine','medicineController')->middleware('AuthCheck');
     Route::resource('doseschedule','doselist')->middleware('AuthCheck');
     Route::resource('wards','wardController')->middleware('AuthCheck');
-    Route::resource('schedule','attendantSchedule')->middleware('AuthCheck');
+    Route::resource('scheduleshow','attendantSchedule')->middleware('AuthCheck');
     Route::resource('shift','shiftController')->middleware('AuthCheck');
     Route::resource('assignedshift','assign_shift')->middleware('AuthCheck');
+    Route::resource('bedcategory','bed_category_Controller')->middleware('AuthCheck');
+    Route::resource('bed','bedsController')->middleware('AuthCheck');
+
+
+
+    Route::get('/shifts_assigned/see',[App\Http\Controllers\OtherController::class,'index'])->name('shifts_assigned/see');
+    Route::get('/shifts_assigned/{id}',[App\Http\Controllers\OtherController::class,'see_attendant'])->name('shifts_assigned');
+    Route::post('/schedule/new',[App\Http\Controllers\OtherController::class,'store'])->name('/schedule/new');
+    Route::get('/schedule',[App\Http\Controllers\OtherController::class,'assigned_attendantShow'])->name('/schedule');
+
 
     Route::get('/register',[App\Http\Controllers\loginController::class,'register'])->name('register')->middleware('AuthCheck');
     Route::post('/register/save',[App\Http\Controllers\loginController::class,'save'])->name('/register/save')->middleware('AuthCheck');
@@ -114,10 +124,14 @@ Route::get('/login', [App\Http\Controllers\loginController::class,'login'])->nam
     Route::get('/attendant/dashboard', [App\Http\Controllers\attendantdashController::class, 'index'])->name('/attendant/dashboard')->middleware('AuthCheck');
     Route::post('/attendantdashstore/{id}', [App\Http\Controllers\attendantdashController::class, 'store'])->name('attendantdashstore');
 
-    Route::get('/attendant/primary/patientlist/{id}', [App\Http\Controllers\attendantdashController::class, 'showprimary'])->name('/attendant/primary/patientlist')->middleware('AuthCheck');
+    Route::get('/attendant/primary/prescription/{id}', [App\Http\Controllers\attendantdashController::class, 'showprimary'])->name('/attendant/primary/patientlist')->middleware('AuthCheck');
+
+    Route::get('/attendant/secondary/prescription/{id}', [App\Http\Controllers\attendantdashController::class,'showsecondary'])->name('/attendant/secondary/patientlist')->middleware('AuthCheck');
 
 
-    Route::get('/attendant/patientlist', [App\Http\Controllers\attendantdashController::class, 'patientList'])->name('/attendant/patientlist')->middleware('AuthCheck');
+    Route::get('/attendant/primary/patientlist', [App\Http\Controllers\attendantdashController::class, 'patientList_primary'])->name('/attendant/primary/patientlist')->middleware('AuthCheck');
+
+    Route::get('/attendant/secondary/patientlist', [App\Http\Controllers\attendantdashController::class, 'patientList_secondary'])->name('/attendant/secondary/patientlist')->middleware('AuthCheck');
 
     Route::post('/attendant/morning/done', [App\Http\Controllers\attendantdashController::class, 'morning_done'])->name('/attendant/morning/done')->middleware('AuthCheck');
     

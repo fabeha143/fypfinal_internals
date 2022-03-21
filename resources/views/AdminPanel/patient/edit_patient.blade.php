@@ -36,6 +36,22 @@
                             <div class="col-lg-4 col-sm-12">
                                 <div class="form-group">
                                     <div class="form-line">
+                                    {{ Form::text('guradian_name',$patient_edit->guradian_name,array('class' => 'form-control','placeholder' => 'Guardian Name'))}}
+                                    </div>
+                                    <span class="text-danger">@error('guradian_name'){{ $message }} @enderror</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                    {{ Form::text('guradian_phone',$patient_edit->guradian_phone,array('class' => 'form-control','placeholder' => 'Guardian Phone'))}}
+                                    </div>
+                                    <span class="text-danger">@error('guradian_phone'){{ $message }} @enderror</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-line">
                                     {{ Form::date('date_of_birth',$patient_edit->pat_date_of_birth,array('class' => 'form-control'))}}
                                     </div>
                                     <span class="text-danger">@error('date_of_birth'){{ $message }} @enderror</span>
@@ -70,7 +86,23 @@
                                 {{ Form::select('pat_category',array('In Patient' => 'In Patient' , 'Out Patient' => 'Out Patient'),'null',['class'=> 'form-control' , 'placeholder' => 'Please Select Patient Category' ] )}}
                                 </div>
                                 <span class="text-danger">@error('pat_category'){{ $message }} @enderror</span>
-                            </div>                               
+                            </div>  
+                            <div class="col-lg-4 col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                    {{ Form::text('pat_case',$patient_edit->pat_case,array('class' => 'form-control','placeholder' => 'Patient Case'))}}
+                                    </div>
+                                    <span class="text-danger">@error('pat_case'){{ $message }} @enderror</span>
+                                </div>
+                            </div>    
+                            <div class="col-lg-4 col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                    {{ Form::text('pat_symptoms',$patient_edit->pat_symptoms,array('class' => 'form-control','placeholder' => 'Patient Symptoms'))}}
+                                    </div>
+                                    <span class="text-danger">@error('pat_symptoms'){{ $message }} @enderror</span>
+                                </div>
+                            </div>                             
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <div class="form-line">
@@ -89,6 +121,12 @@
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="form-group drop-custum">
+                                {{ Form::select('ward',$wardnamelist,'null',['class'=> 'form-control' , 'placeholder' => 'Please Select Ward' ] )}}
+                                </div>
+                                <span class="text-danger">@error('ward_name'){{ $message }} @enderror</span>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="form-group drop-custum">
                                 {{ Form::select('doctor',$doctorName,'null',['class'=> 'form-control' , 'placeholder' => 'Please Select doctor' ] )}}
                                 </div>
                                 <span class="text-danger">@error('doctor'){{ $message }} @enderror</span>
@@ -98,6 +136,12 @@
                                 {{ Form::select('department',$department_data,'null',['class'=> 'form-control' , 'placeholder' => 'Please Select department' ] )}}
                                 </div>
                                 <span class="text-danger">@error('department'){{ $message }} @enderror</span>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="form-group drop-custum">
+                                {{ Form::select('bed',$beds,'null',['class'=> 'form-control' , 'placeholder' => 'Please Select bed' ] )}}
+                                </div>
+                                <span class="text-danger">@error('bed'){{ $message }} @enderror</span>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="form-group drop-custum">

@@ -17,7 +17,8 @@
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                             <thead>
                                 <tr>
-                                    <th>Patient</th>
+                                    <th>Patient id</th>
+                                    <th>Patient Name</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -26,8 +27,9 @@
                                 @foreach($query as $list)
                                     <tr>
                                     <td>{{ $list->id}}</td>
+                                    <td>{{ $list->pat_fname}}</td>
                                     <td>
-                                    <a class="btn btn-primary btn-sm" href="{{ url('/attendant/primary/patientlist',$list->id)}}">View Prescription Schedule</a>
+                                    <a class="btn btn-primary btn-sm" href="{{ url('/attendant/secondary/prescription',$list->id)}}">View Prescription Schedule</a>
                                     </td>
                                     <tr>
                                 @endforeach
