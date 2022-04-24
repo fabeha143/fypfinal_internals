@@ -5,8 +5,10 @@ use App\Models\shifts;
 use App\Models\ward;
 use App\Models\assign_shifts;
 use App\Models\attendant_assigns;
+use App\Models\inpatient_prescription;
 use Illuminate\Http\Request;
 use DB;
+use Carbon\Carbon;
 
 class OtherController extends Controller
 {
@@ -71,5 +73,13 @@ class OtherController extends Controller
     {
         attendant_assigns::where('id' , $id)->delete();
         return back();
+    }
+    public function other()
+    {
+        $query = inpatient_prescription::whereRaw('morning_time + INTERVAL 2 MINUTE <= CURRENT_TIME() AND date = CURRENT_DATE')->get();
+        
+       
+        
+   
     }
 }

@@ -19,10 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('employee','ApiController@employee');
 Route::post('/login/check','ApiController@check');
-
-
-
-
+Route::get('/other', [App\Http\Controllers\OtherController::class, 'other'])->name('other');
 
 
 Route::get('doctor','ApiController@doctor');

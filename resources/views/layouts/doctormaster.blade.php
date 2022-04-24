@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="/plugins/morrisjs/morris.css"/>
 <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="/plugins/dropzone/dropzone.css"/>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 <!-- Custom Css -->
 <link rel="stylesheet" href="/css/main.css"/>
@@ -111,6 +112,7 @@
 <script src="/bundles/mainscripts.bundle.js"></script><!-- Custom Js -->
 <script src="/js/pages/charts/sparkline.min.js"></script>
 <script src="/plugins/dropzone/dropzone.js""></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </body>
 
 </html>

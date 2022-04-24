@@ -26,8 +26,11 @@ class InpatientPrescriptions extends Migration
             $table->string('unit');
             $table->string('date')->default(null);
             $table->time('morning_time')->nullable();
+            $table->string('morning_status')->nullable()->default(0);
             $table->time('evening_time')->nullable();
+            $table->string('evening_status')->nullable()->default(0);
             $table->time('night_time')->nullable();
+            $table->string('night_status')->nullable()->default(0);
             $table->text('comment');
             $table->foreignId('medicines')->constrained('medicines');
         });

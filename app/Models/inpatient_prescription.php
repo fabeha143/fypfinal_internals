@@ -9,7 +9,7 @@ class inpatient_prescription extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ['medicines','type','start_date' , 'end_date','dose_frequency','unit','morning_time','comment','evening_time', 'night_time','patient_id','doctor_id','date','department_id','ward_id'];
+    protected $fillable = ['medicines','type','start_date' , 'end_date','dose_frequency','unit','morning_time','comment','evening_time', 'night_time','patient_id','doctor_id','date','department_id','ward_id','morning_status','evening_status','night_status'];
     public function medicine()
     {
         return $this->belongsTo(medicines::class, 'medicines', 'id');

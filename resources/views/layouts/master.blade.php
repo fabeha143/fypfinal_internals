@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="/plugins/morrisjs/morris.css"/>
 <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="/plugins/dropzone/dropzone.css"/>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js" integrity="sha512-vBmx0N/uQOXznm/Nbkp7h0P1RfLSj0HQrFSzV8m7rOGyj30fYAOKHYvCNez+yM8IrfnW0TCodDEjRqf6fodf/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -137,6 +139,7 @@
 <script src="/js/pages/charts/sparkline.min.js"></script>
 <script src="/plugins/dropzone/dropzone.js""></script>
 <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </body>
 
 </html>

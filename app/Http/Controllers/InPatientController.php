@@ -54,11 +54,14 @@ class InPatientController extends Controller
         $start_date = $request->start_date;
         $end_date = $request->end_date;
         $list = array();
+
+    
+
         for ( $i = $start_date; $i <= $end_date; $i++ ){
 
             $stop_date = date('Y-m-d', strtotime($i));
             inpatient_prescription::create([
-                'medicines' => $request->medicines,
+                'medicines' =>$request->medicines,
                 'type' => $request->type,
                 'unit' =>$request->unit,
                 'dose_frequency' => $request->dose_frequency,

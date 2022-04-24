@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\MessageNotification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -135,6 +136,13 @@ Route::get('/login', [App\Http\Controllers\loginController::class,'login'])->nam
 
     Route::post('/attendant/morning/done', [App\Http\Controllers\attendantdashController::class, 'morning_done'])->name('/attendant/morning/done')->middleware('AuthCheck');
     
+
+    Route::get('/other', [App\Http\Controllers\OtherController::class, 'other'])->name('other');
     ///////////////////////////////Attendant/////////////////////////////////////////////
     
-    
+    Route::get('/event', function(){
+        event(new MessageNotification('This is Message'));
+    });
+    Route::get('/listen', function(){
+       return view('listen');
+    });
