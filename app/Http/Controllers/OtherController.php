@@ -6,9 +6,17 @@ use App\Models\ward;
 use App\Models\assign_shifts;
 use App\Models\attendant_assigns;
 use App\Models\inpatient_prescription;
+use App\Models\employee;
 use Illuminate\Http\Request;
+use App\Events\MessageNotification;
 use DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Notification;
+use \Illuminate\Notifications\Notifiable;
+use App\Notifications\dos_reminder;
+use App\Notifications\SlackNotification;
+use Monolog\Handler\Slack\SlackRecord;
+
 
 class OtherController extends Controller
 {
@@ -56,7 +64,7 @@ class OtherController extends Controller
         
     ]);
         
-            $return = attendant_assigns::create([
+            attendant_assigns::create([
                 'attendant_primary' => $request->attendant_primary,
                 'attendant_secondary' => $request->attendant_secondary,
                 'ward' => $request->ward,
@@ -74,12 +82,11 @@ class OtherController extends Controller
         attendant_assigns::where('id' , $id)->delete();
         return back();
     }
-    public function other()
-    {
-        $query = inpatient_prescription::whereRaw('morning_time + INTERVAL 2 MINUTE <= CURRENT_TIME() AND date = CURRENT_DATE')->get();
+    public function other(){
+        $user = employee::find('1');
+        $new = employee::all();
+        Notification::send($user, new SlackNotification($new));
         
-       
-        
-   
+             
     }
 }

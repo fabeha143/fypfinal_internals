@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class attendant_assigns extends Model
 {
     use HasFactory;
+
+    
     public $timestamps = false;
     protected $fillable = ['attendant_primary','attendant_secondary','ward'];
     
@@ -30,5 +32,9 @@ class attendant_assigns extends Model
     public function patients()
     {
         return $this->belongsTo(patient::class, 'patient_id', 'id');
+    }
+    public function routeNotificationForSlack($notification)
+    {
+        return 'https://hooks.slack.com/services/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';
     }
 }

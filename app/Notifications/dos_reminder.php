@@ -4,22 +4,25 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\MailMessage;
 
-class DoseNotification extends Notification
+class dos_reminder extends Notification
 {
     use Queueable;
-    public $patient_id;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($inpatient_prescription)
+    public $data1;
+    
+
+    public function __construct($new)
     {
-        $this->patient_id = $patient_id;
+        $this->data1 = $new;
+        
     }
 
     /**
@@ -30,7 +33,7 @@ class DoseNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database','broadcast'];
+        return ['database'];
     }
 
     /**
@@ -38,22 +41,9 @@ class DoseNotification extends Notification
      *
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return \Illuminate\Notifications\Messages\SlackMessage
      */
-    public function toDatabase($notifiable)
-    {
-        return [
-            'patient'=>$this->patient_id,
-            'admin'=>$notifiable 
-        ];
-    }
-
-    public function toBroadcast($notifiable)
-    {
-        return new BroadcastMessage([
-            'patient'=>$this->patient_id,
-            'admin'=> $notifiable
-        ]);
-    }
+    
 
     /**
      * Get the array representation of the notification.
@@ -64,7 +54,8 @@ class DoseNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'type'=>$this->data1
         ];
     }
+   
 }

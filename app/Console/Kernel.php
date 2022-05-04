@@ -6,8 +6,13 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Events\MessageNotification;
 use App\Models\inpatient_prescription;
+use App\Models\employee;
+use App\Notifications\dos_reminder;
+use App\Notifications\SlackNotification;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Notifications\Messages\SlackMessage;
+use Illuminate\Support\Facades\Notification;
 
 class Kernel extends ConsoleKernel
 {
@@ -20,6 +25,7 @@ class Kernel extends ConsoleKernel
     
     protected function schedule(Schedule $schedule)
     {
+        
         $schedule->call(function(){
             $morning_time = inpatient_prescription::whereRaw('morning_time + INTERVAL 5 MINUTE <= CURRENT_TIME() AND date = CURRENT_DATE AND morning_status = 0')->get();
 
@@ -28,16 +34,40 @@ class Kernel extends ConsoleKernel
             $night_time = inpatient_prescription::whereRaw('night_time + INTERVAL 5 MINUTE <= CURRENT_TIME() AND date = CURRENT_DATE AND night_status = 0')->get();
 
             if($morning_time->count()!=0){
-                event(new MessageNotification('morning time query executed'));
+                $user1 = employee::select('employees.id')->join('attendant_assigns','attendant_assigns.attendant_primary','=','employees.id')->join('inpatient_prescriptions','attendant_assigns.ward','=','inpatient_prescriptions.ward_id')->first();
+    
+                $user2 = employee::select('employees.id')->join('attendant_assigns','attendant_assigns.attendant_secondary','=','employees.id')->join('inpatient_prescriptions','attendant_assigns.ward','=','inpatient_prescriptions.ward_id')->first();
+
+
+                $new = $morning_time;
+                $user1->notify(new dos_reminder($new));
+                $user2->notify(new dos_reminder($new));
+                Notification::send($user1, new SlackNotification($new));
+                event(new MessageNotification('Morning time query executed'));
             }
             if($evening_time->count()!=0){
+                $user1 = employee::select('employees.id')->join('attendant_assigns','attendant_assigns.attendant_primary','=','employees.id')->join('inpatient_prescriptions','attendant_assigns.ward','=','inpatient_prescriptions.ward_id')->first();
+    
+                $user2 = employee::select('employees.id')->join('attendant_assigns','attendant_assigns.attendant_secondary','=','employees.id')->join('inpatient_prescriptions','attendant_assigns.ward','=','inpatient_prescriptions.ward_id')->first();
+
+                $new = $evening_time;
+                $user1->notify(new dos_reminder($new));
+                $user2->notify(new dos_reminder($new));
+                Notification::send($user1, new SlackNotification($new));
+
                 event(new MessageNotification('evening time query executed'));
             }
             if($night_time->count()!=0){
+                $user1 = employee::select('employees.id')->join('attendant_assigns','attendant_assigns.attendant_primary','=','employees.id')->join('inpatient_prescriptions','attendant_assigns.ward','=','inpatient_prescriptions.ward_id')->first();
+    
+                $user2 = employee::select('employees.id')->join('attendant_assigns','attendant_assigns.attendant_secondary','=','employees.id')->join('inpatient_prescriptions','attendant_assigns.ward','=','inpatient_prescriptions.ward_id')->first();
+
+
+                $new = $night_time;
+                $user1->notify(new dos_reminder($new));
+                $user2->notify(new dos_reminder($new));
+                Notification::send($user1, new SlackNotification($new));
                 event(new MessageNotification('Night time query executed'));
-            }
-            else{
-                event(new MessageNotification('null'));
             }
         })->everyMinute();
         

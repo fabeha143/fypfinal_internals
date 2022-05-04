@@ -140,9 +140,12 @@ Route::get('/login', [App\Http\Controllers\loginController::class,'login'])->nam
     Route::get('/other', [App\Http\Controllers\OtherController::class, 'other'])->name('other');
     ///////////////////////////////Attendant/////////////////////////////////////////////
     
-    Route::get('/event', function(){
-        event(new MessageNotification('This is Message'));
-    });
-    Route::get('/listen', function(){
-       return view('listen');
-    });
+    //service
+
+    // Route::get('/service/redirect', [App\Http\Controllers\ServiceController::class, 'morning_service'])->name('/service/redirect');
+    // Route::get('/event', function(){
+    //     event(new MessageNotification('This is Message'));
+    // });
+    // Route::get('/listen', function(){
+    //    return view('listen');
+    // });

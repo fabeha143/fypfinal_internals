@@ -47,6 +47,21 @@
     <div class="col-12">
         <div class="navbar-header"> <a href="javascript:void(0);" class="bars"></a> <a class="navbar-brand" href="{{ url('/attendant/dashboard')}}">Good Health</a> </div>
         <ul class="nav navbar-nav navbar-right">
+        <li ><a href="#" id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-notifications"></i></a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                    @foreach($data->notifications as $notification)
+                       <ul>
+
+                           <a><li>Please give medicines to Patient {{ $notification->data['type'][0]['patient_id'] }}</li></a>
+                       </ul> 
+
+                    @endforeach
+                        
+                    
+                       
+
+                    </div>
+                </li>
                 <li><a href="{{ url('/inbox/create')}}" title="Go to Inbox"><i class="zmdi zmdi-email"></i></a></li>
                 <li><a href="{{ url('/profile')}}" title="Go to Profile"><i class="zmdi zmdi-account"></i></a></li>
                 <li><a href="{{ url('/logout') }}"><i class="zmdi zmdi-sign-in"></i></a></li>
