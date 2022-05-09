@@ -82,11 +82,5 @@ class OtherController extends Controller
         attendant_assigns::where('id' , $id)->delete();
         return back();
     }
-    public function other(){
-        $user = employee::find('1');
-        $new = employee::all();
-        Notification::send($user, new SlackNotification($new));
-        
-             
-    }
+ 
 }

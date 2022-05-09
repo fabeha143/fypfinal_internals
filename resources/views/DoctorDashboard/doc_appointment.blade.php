@@ -18,10 +18,11 @@
                             <thead>
                                 <tr>
                                     <th>Patient Name</th>
+                                    <th>Date Of Birth</th>
+                                    <th>Phone Number</th>
                                     <th>Appointment Date</th>
                                     <th>Appointment Time</th>
                                     <th>Status</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -29,18 +30,18 @@
                                 @foreach($appoint_data as $list)
                                     <tr>
                                         <td>{{ $list->patient_name}}</td>
+                                        <td>{{ $list->patient_dob}}</td>
+                                        <td>{{ $list->phone_number}}</td>
                                         <td>{{ $list->appointment_date}}</td>
                                         <td>{{ $list->appointment_time}}</td>
                                         <td>{{ $list->status}}</td>
-                                        <td>
-                                        <a class="btn btn-primary btn-sm" href="{{ url('/writePrescription',$list->id)}}">Prescribe</a> 
-                                        </td>
+                                        
                                     </tr>
                                 
                                 @endforeach
                                 @else
                             <tr>
-                                <td colspan="5">No Data found!!</td>
+                                <td colspan="7">No Data found!!</td>
                             </tr>
                             @endif 
                             

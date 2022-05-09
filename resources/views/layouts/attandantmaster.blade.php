@@ -16,6 +16,8 @@
 
 <!-- Custom Css -->
 <link rel="stylesheet" href="/css/main.css"/>
+<link rel="manifest" href="/manifest.json">
+@laravelPWA
 </head>
 
 <body class="theme-cyan">
@@ -45,7 +47,11 @@
 <!-- Top Bar -->
 <nav class="navbar clearHeader">
     <div class="col-12">
-        <div class="navbar-header"> <a href="javascript:void(0);" class="bars"></a> <a class="navbar-brand" href="{{ url('/attendant/dashboard')}}">Good Health</a> </div>
+        <div class="navbar-header"> <a href="javascript:void(0);" class="bars"></a> 
+            <a class="navbar-brand" href="{{ url('/attendant/dashboard')}}">
+            <img style="height:53px" src="/images/favicon.png" alt="logo">
+            <span>Good Helth</span> 
+    </div>
         <ul class="nav navbar-nav navbar-right">
         <li ><a href="#" id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-notifications"></i></a>
                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">

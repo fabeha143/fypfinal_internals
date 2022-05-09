@@ -11,7 +11,8 @@
 
 <!-- Custom Css -->
 <link rel="stylesheet" href="/css/main.css"/>
-
+<link rel="manifest" href="/manifest.json">
+@laravelPWA
 </head>
 
 <body class="theme-cyan authentication">
@@ -56,10 +57,26 @@
 <div class="theme-bg"></div>
 
 <!-- Jquery Core Js --> 
+
 <script src="/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
 <script src="/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
 
 <script src="/bundles/mainscripts.bundle.js"></script><!-- Custom Js -->
+<script type="text/javascript">
+    // Initialize the service worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/serviceworker.js', {
+            scope: '.'
+        }).then(function (registration) {
+            // Registration was successful
+            console.log('Laravel PWA: ServiceWorker registration successful with scope: ', registration.scope);
+        }, function (err) {
+            // registration failed :(
+            console.log('Laravel PWA: ServiceWorker registration failed: ', err);
+        });
+    }
+</script>
+
 </body>
 
 </html>

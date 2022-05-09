@@ -14,7 +14,7 @@
                     <div class="icon"> <i class="zmdi zmdi-account col-blue"></i> </div>
                     <div class="content">
                         <div class="text">Appointment List</div>
-                        <div class="number"></div>
+                        <div class="number">{{  $appoint_count }}</div>
                     </div>
                 </div>
             </div>
@@ -23,41 +23,14 @@
                     <div class="icon"> <i class="zmdi zmdi-account col-green"></i> </div>
                     <div class="content">
                         <div class="text">In Patient List</div>
-                        <div class="number"></div>
+                        <div class="number">{{  $active_patient }}</div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
-                <div class="info-box-4 hover-zoom-effect">
-                    <div class="icon"> <i class="zmdi zmdi-bug col-blush"></i> </div>
-                    <div class="content">
-                        <div class="text">Appointment Prescription List</div>
-                        <div class="number"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
-                <div class="info-box-4 hover-zoom-effect">
-                    <div class="icon"> <i class="zmdi zmdi-balance col-cyan"></i> </div>
-                    <div class="content">
-                        <div class="text">In Patient Prescriptions List</div>
-                        <div class="number"></div>
-                    </div>
-                </div>
-            </div>
+            
+            
         </div>
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>Hospital Survey</h2>
-                    </div>
-                    <div class="body">
-                        <canvas id="line_chart" height="70"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
        
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12">

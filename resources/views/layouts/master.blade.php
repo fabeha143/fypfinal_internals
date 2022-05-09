@@ -20,6 +20,10 @@
 
 <!-- Custom Css -->
 <link rel="stylesheet" href="/css/main.css"/>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#6777ef"/>
+<link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
+@laravelPWA
 
 </head>
 
@@ -50,7 +54,13 @@
 <!-- Top Bar -->
 <nav class="navbar clearHeader">
     <div class="col-12">
-        <div class="navbar-header"> <a href="javascript:void(0);" class="bars"></a> <a class="navbar-brand" href="{{ url('/admin/dashboard')}}">Good Health</a> </div>
+        <div class="navbar-header"> 
+            <a href="javascript:void(0);" class="bars"></a> 
+            <a class="navbar-brand" href="{{ url('/admin/dashboard')}}">
+            <img style="height:53px" src="/images/favicon.png" alt="logo">
+            <span>Good Helth</span>
+        </a> 
+    </div>
         <ul class="nav navbar-nav navbar-right">
                 <li ><a href="#" id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-notifications"></i></a>
                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
@@ -79,7 +89,7 @@
     <aside id="leftsidebar" class="sidebar"> 
         <!-- User Info -->
         <div class="user-info">
-            
+        <div class="admin-image"> <img src="/images/admin.png" alt=""></div>
             <div class="admin-action-info"><span>Welcome</span>
                 <h3>{{$data->username}}</h3>
                 
@@ -143,6 +153,7 @@
 
 <div class="color-bg"></div>
 
+
 <script src="/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
 <script src="/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
 
@@ -155,6 +166,9 @@
 <script src="/plugins/dropzone/dropzone.js""></script>
 <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+
 </body>
 
 </html>

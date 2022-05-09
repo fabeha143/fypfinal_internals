@@ -33,6 +33,7 @@
                                 <th>Evening Time</th>
                                 <th>Night Time</th>
                                 <th>Comment</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,16 +49,32 @@
                                     <td>{{ $list->evening_time}}</td>
                                     <td>{{ $list->night_time}}</td>
                                     <td>{{ $list->comment}}</td>
-                                    <td>{{ $list->pres_disease}}</td>
-                                    
-                                    
+                                    <td> 
+                                    <form action="{{ route('/delete/prescription',$list->patient_id) }}" method="POST">
+                                        @csrf
+                                        <button class="btn btn-danger btn-sm">Delete</button> 
+                                    </form>    
                                 </tr>
                                 @endforeach
+                                
+                                
+                                
                             @endif
                         </tbody>
                     </table>
             </div>
                 {{ Form::open(array('url' => route('InpatientPrescriptioncreate'), 'method' => 'post' , 'class' => 'body')) }}
+                @if(Session::get('success'))
+                        <div class="alert alert-success">
+                            {{ Session::get('success') }}
+                        </div>
+                    @endif
+                    
+                    @if(Session::get('fail'))
+                        <div class="alert alert-success">
+                            {{ Session::get('fail') }}
+                        </div>
+                    @endif
                 <p>Add Prescription Details </p>
                     <div class="row clearfix">
                             <div class="col-sm-6">
@@ -135,20 +152,13 @@
                             
                                 <div class="">
                                     <button type="submit" class="btn btn-raised g-bg-cyan">Add</button>
-                                    <button type="submit" class="btn btn-danger">Cancel</button>
+                                    
                                 </div>
                             
                         </div>
                     {{ Form::close() }}
 
-                    {{ Form::open(array('url' => route('Inpatientprescription'), 'method' => 'get' , 'class' => 'body')) }}
-
-                    <div style="float: right;">
-
-                        <button type="submit" class="btn btn-raised g-bg-cyan">Submit</button>
-                    </div>
-
-                    {{ Form::close() }}
+                   
 
                     </div>
 			</div>

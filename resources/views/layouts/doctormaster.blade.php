@@ -16,6 +16,8 @@
 
 <!-- Custom Css -->
 <link rel="stylesheet" href="/css/main.css"/>
+<link rel="manifest" href="/manifest.json">
+@laravelPWA
 </head>
 
 <body class="theme-cyan">
@@ -45,7 +47,13 @@
 <!-- Top Bar -->
 <nav class="navbar clearHeader">
     <div class="col-12">
-        <div class="navbar-header"> <a class="navbar-brand" href="{{ url('/dashboard/doctor')}}">Good Health</a> </div>
+        <div class="navbar-header"> 
+            <a href="javascript:void(0);" class="bars"></a>
+           <a class="navbar-brand" href="{{ url('/dashboard/doctor')}}">
+            <img style="height:53px" src="/images/favicon.png" alt="logo">
+            <span>Good Helth</span> 
+        </a>
+        </div>
         <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{ url('/inbox/create')}}" title="Go to Inbox"><i class="zmdi zmdi-email"></i></a></li>
                 <li><a href="{{ url('/profile')}}" title="Go to Profile"><i class="zmdi zmdi-account"></i></a></li>
@@ -60,7 +68,9 @@
     <aside id="leftsidebar" class="sidebar"> 
         <!-- User Info -->
         <div class="user-info">
-        <div class="admin-image"> <img src="/images/doctor.png" alt=""></div>
+        <div class="admin-image"> 
+            
+            <img src="/images/doctor.png" alt=""></div>
             <div class="admin-action-info"> <span>Welcome</span>
                 <h3>{{$doctordata->doc_fname}}</h3>
                 <ul>
@@ -70,9 +80,8 @@
             <div class="quick-stats">
                 <h5>Today Report</h5>
                 <ul>
-                    <li><span><i>Approved</i></span></li>
-                    <li><span><i>Active Patient</i></span></li>
-                    <li><span><i>Prescriptions</i></span></li>
+                    <li style="width:50%"><span>{{$appoint_count}}<i>Approved</i></span></li>
+                    <li style="width:50%"><span>{{$active_patient}}<i>Active Patient</i></span></li>
                 </ul>
             </div>
         </div>
@@ -83,11 +92,10 @@
                 <li class="header">MAIN NAVIGATION</li>
                 <li><a href="{{ url('/dashboard/doctor')}}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>  
                 <li><a href="{{ url('/AppointmentList')}}"><i class="zmdi zmdi-calendar-check"></i><span>Appointment List</span></a></li> 
-                <li><a href=" {{ url('/appprescription') }}" ><i class="zmdi zmdi-view-array"></i><span>Out Patient Prescription</span> </a>
-                </li>
+                
                 <li><a href="{{ url('/inpatientList')}}" ><i class="zmdi zmdi-view-array"></i><span>In Patient List</span> </a>
                 </li>        
-                <li><a href="{{ url('/Inpatientprescription/{id}')}}" ><i class="zmdi zmdi-view-array"></i><span>In Patient Prescription</span> </a>
+                <li><a href="{{ url('/Inpatientprescription')}}" ><i class="zmdi zmdi-view-array"></i><span>In Patient Prescription</span> </a>
                 </li>                                          
                 
                 
@@ -113,6 +121,7 @@
 <script src="/js/pages/charts/sparkline.min.js"></script>
 <script src="/plugins/dropzone/dropzone.js""></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 </body>
 
 </html>

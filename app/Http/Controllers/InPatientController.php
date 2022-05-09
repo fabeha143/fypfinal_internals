@@ -89,4 +89,8 @@ class InPatientController extends Controller
         $patientsPres  = inpatient_prescription::where('patient_id' , $id)->first();
         return view('DoctorDashboard/Patient_prescriptions',['patientsPres'=>$patientsPres],compact('patients','patientsPres'));
     }
+    public function delete_prescription($id=null){
+        inpatient_prescription::where('patient_id' , $id)->delete();
+        return redirect()->back();
+    }
 }

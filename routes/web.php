@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 //Website Routes
 Route::view('/home ', 'website/homepage');
@@ -47,7 +45,7 @@ Route::post('/contactUs/send', [App\Http\Controllers\mailCOntroller::class,'webm
 Route::post('/login/check',[App\Http\Controllers\loginController::class,'check'])->name('/login/check');
 Route::get('/admin/dashboard', [App\Http\Controllers\adminDashController::class,'index'])->name('/admin/dashboard')->middleware('AuthCheck');
 
-Route::get('/login', [App\Http\Controllers\loginController::class,'login'])->name('/login');
+Route::get('/', [App\Http\Controllers\loginController::class,'login'])->name('/login');
 
     Route::get('/logout', [App\Http\Controllers\loginController::class,'logout'])->name('logout');
     Route::resource('patient','PatientController')->middleware('AuthCheck');
@@ -78,6 +76,8 @@ Route::get('/login', [App\Http\Controllers\loginController::class,'login'])->nam
     Route::get('/appointment', [App\Http\Controllers\appointmentController::class, 'index'])->name('index')->middleware('AuthCheck');
     Route::get('/approved/{id}', [App\Http\Controllers\appointmentController::class, 'approved'])->name('approved');
     Route::get('/cancel/{id}', [App\Http\Controllers\appointmentController::class, 'cancel'])->name('cancel');
+    Route::get('/add/appointment', [App\Http\Controllers\appointmentController::class, 'add_appointment'])->name('/add/appointment');
+    Route::post('/appointment/store', [App\Http\Controllers\appointmentController::class, 'store'])->name('/appointment/store');
     
     
     Route::get('/createschedule', [App\Http\Controllers\scheduleController::class, 'create'])->name('createschedule')->middleware('AuthCheck');
@@ -108,12 +108,13 @@ Route::get('/login', [App\Http\Controllers\loginController::class,'login'])->nam
     Route::get('/AppointmentList', [App\Http\Controllers\doctordashController::class, 'doc_appointment'])->name('AppointmentList')->middleware('AuthCheck');
     Route::get('/inpatientList', [App\Http\Controllers\doctordashController::class, 'inpatientlist'])->name('inpatientList')->middleware('AuthCheck');
     
-    Route::get('/writePrescription/{id}', [App\Http\Controllers\app_prescription_controller::class, 'index'])->name('writePrescription')->middleware('AuthCheck');
     Route::post('/Prescriptioncreate',[App\Http\Controllers\app_prescription_controller::class, 'store'])->name('Prescriptioncreate');
     Route::resource('appprescription','outpatient_prescription_controller')->middleware('AuthCheck');
     
     Route::get('/writePrescriptionpatient/{id}', [App\Http\Controllers\InPatientController::class, 'index'])->name('writePrescriptionpatient')->middleware('AuthCheck');
     Route::post('/InpatientPrescriptioncreate',[App\Http\Controllers\InPatientController::class, 'store'])->name('InpatientPrescriptioncreate');
+
+    Route::post('/delete/prescription/{id}',[App\Http\Controllers\InPatientController::class, 'delete_prescription'])->name('/delete/prescription');
     
     Route::get('/showPrescription/{id}', [App\Http\Controllers\Inpatientprescription::class, 'showPrescription'])->name('showPrescription')->middleware('AuthCheck');
     Route::get('/Inpatientprescription',[App\Http\Controllers\Inpatientprescription::class, 'index'])->name('Inpatientprescription');
@@ -134,7 +135,7 @@ Route::get('/login', [App\Http\Controllers\loginController::class,'login'])->nam
 
     Route::get('/attendant/secondary/patientlist', [App\Http\Controllers\attendantdashController::class, 'patientList_secondary'])->name('/attendant/secondary/patientlist')->middleware('AuthCheck');
 
-    Route::post('/attendant/morning/done', [App\Http\Controllers\attendantdashController::class, 'morning_done'])->name('/attendant/morning/done')->middleware('AuthCheck');
+    Route::post('/attendant/morning/done/{id}', [App\Http\Controllers\attendantdashController::class, 'morning_done'])->name('/attendant/morning/done')->middleware('AuthCheck');
     
 
     Route::get('/other', [App\Http\Controllers\OtherController::class, 'other'])->name('other');

@@ -1,5 +1,14 @@
 @extends('layouts.master')
 @section('content')
+<!-- #Float icon -->
+<ul id="f-menu" class="mfbc-br mfb-zoomin" data-mfb-toggle="hover">
+    <li class="mfbc_wrap">
+        <a href="{{ route('/add/appointment')}}" class="mfbcb-main g-bg-cyan">
+            <i class="mfbcm-icon-resting zmdi zmdi-plus"></i>
+            <i class="mfbcm-icon-active zmdi zmdi-close"></i>
+        </a>
+    </li>
+</ul>
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
