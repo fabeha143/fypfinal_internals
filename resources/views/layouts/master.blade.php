@@ -62,13 +62,18 @@
         </a> 
     </div>
         <ul class="nav navbar-nav navbar-right">
-                <li ><a href="#" id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-notifications"></i></a>
+                <li ><a href="#" id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown"><span class="badge bg-danger">{{$data->notifications->count()}}</span><i class="zmdi zmdi-notifications"></i></a>
                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
                     @foreach($data->notifications as $notification)
-                       <ul>
-
-                           <a><li>Please give medicines to Patient {{ $notification->data['type'][0]['patient_id'] }}</li></a>
-                       </ul> 
+                        @if($data->notifications->count() == null)
+                            <ul>
+                                <li><a>Please give medicines to Patient {{ $notification->data['type'][0]['patient_id'] }}</a></li>
+                            </ul> 
+                        @else
+                            <ul>
+                                <li>No Notification Found</li>
+                            </ul>
+                        @endif
 
                     @endforeach
                         
@@ -163,7 +168,7 @@
 <script src="/bundles/mainscripts.bundle.js"></script><!-- Custom Js -->
 <script src="/js/index.js"></script>
 <script src="/js/pages/charts/sparkline.min.js"></script>
-<script src="/plugins/dropzone/dropzone.js""></script>
+<script src="/plugins/dropzone/dropzone.js"></script>
 <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 

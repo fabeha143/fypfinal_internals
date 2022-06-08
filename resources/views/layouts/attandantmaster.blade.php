@@ -53,8 +53,9 @@
             <span>Good Helth</span> 
     </div>
         <ul class="nav navbar-nav navbar-right">
-        <li ><a href="#" id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-notifications"></i></a>
+        <li ><a href="#" id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown"><span class="badge bg-danger">New</span><i class="zmdi zmdi-notifications"></i></a>
                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+
                     @foreach($data->notifications as $notification)
                        <ul>
 

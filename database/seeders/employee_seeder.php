@@ -23,7 +23,7 @@ class employee_seeder extends Seeder
             'emp_phone'=>'3318308323',
             'emp_address'=>'Johar Karachi',
             'username'=>'admin',
-            'email'  => 'fabehanaqvi7@gmail.com',
+            'email'  => 'admin@gmail.com',
             'password' =>  bcrypt('admin123'),
             'role' =>'Admin'
         ]);

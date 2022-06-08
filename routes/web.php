@@ -45,7 +45,7 @@ Route::post('/contactUs/send', [App\Http\Controllers\mailCOntroller::class,'webm
 Route::post('/login/check',[App\Http\Controllers\loginController::class,'check'])->name('/login/check');
 Route::get('/admin/dashboard', [App\Http\Controllers\adminDashController::class,'index'])->name('/admin/dashboard')->middleware('AuthCheck');
 
-Route::get('/', [App\Http\Controllers\loginController::class,'login'])->name('/login');
+Route::get('/', [App\Http\Controllers\loginController::class,'login'])->name('/login')->middleware('guest');
 
     Route::get('/logout', [App\Http\Controllers\loginController::class,'logout'])->name('logout');
     Route::resource('patient','PatientController')->middleware('AuthCheck');

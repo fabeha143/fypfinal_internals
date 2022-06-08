@@ -12,7 +12,6 @@
 <!-- Custom Css -->
 <link rel="stylesheet" href="/css/main.css"/>
 <link rel="manifest" href="/manifest.json">
-@laravelPWA
 </head>
 
 <body class="theme-cyan authentication">
