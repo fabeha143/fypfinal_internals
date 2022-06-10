@@ -53,22 +53,22 @@
             <span>Good Helth</span> 
     </div>
         <ul class="nav navbar-nav navbar-right">
-        <li ><a href="#" id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown"><span class="badge bg-danger">New</span><i class="zmdi zmdi-notifications"></i></a>
-                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-
+            <li>
+                <a href="#" id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown"><span class="badge bg-danger">{{$data->notifications->count()}}</span><i class="zmdi zmdi-notifications"></i></a>
+                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
                     @foreach($data->notifications as $notification)
-                       <ul>
-
-                           <a><li>Please give medicines to Patient {{ $notification->data['type'][0]['patient_id'] }}</li></a>
-                       </ul> 
-
+                        @if($data->notifications->count() == null)
+                            <ul>
+                                <li><a>Please give medicines to Patient {{ $notification->data['type'][0]['patient_id'] }}</a></li>
+                            </ul> 
+                        @else
+                            <ul>
+                                <li>No Notification Found</li>
+                            </ul>
+                        @endif
                     @endforeach
-                        
-                    
-                       
-
-                    </div>
-                </li>
+                </div>
+            </li>
                 <li><a href="{{ url('/inbox/create')}}" title="Go to Inbox"><i class="zmdi zmdi-email"></i></a></li>
                 <li><a href="{{ url('/profile')}}" title="Go to Profile"><i class="zmdi zmdi-account"></i></a></li>
                 <li><a href="{{ url('/logout') }}"><i class="zmdi zmdi-sign-in"></i></a></li>

@@ -25,6 +25,7 @@ Route::view('/DoctorDetail ', 'website/doctorwebDetail');
 Route::view('/contactus ', 'website/contactus');
 Route::view('/faq ', 'website/faqWeb');
 Route::view('/forgetpasswordp ', 'website/forgetpassweb');
+Route::get('/search', [App\Http\Controllers\OtherController::class,'search_doctor'])->name('search');
 
 
 Route::get('/Appointment ', [App\Http\Controllers\AppointmentWebController::class,'index'])->name('/Appointment');
@@ -80,8 +81,8 @@ Route::get('/', [App\Http\Controllers\loginController::class,'login'])->name('/l
     Route::post('/appointment/store', [App\Http\Controllers\appointmentController::class, 'store'])->name('/appointment/store');
     
     
-    Route::get('/createschedule', [App\Http\Controllers\scheduleController::class, 'create'])->name('createschedule')->middleware('AuthCheck');
-    Route::post('/addattendant/{id}', [App\Http\Controllers\scheduleController::class, 'store'])->name('addattendant');
+    // Route::get('/createschedule', [App\Http\Controllers\scheduleController::class, 'create'])->name('createschedule')->middleware('AuthCheck');
+    // Route::post('/addattendant/{id}', [App\Http\Controllers\scheduleController::class, 'store'])->name('addattendant');
     Route::resource('medicinesCategory','med_cat_controller')->middleware('AuthCheck');
     
     //Mail
@@ -126,7 +127,7 @@ Route::get('/', [App\Http\Controllers\loginController::class,'login'])->name('/l
     Route::get('/attendant/dashboard', [App\Http\Controllers\attendantdashController::class, 'index'])->name('/attendant/dashboard')->middleware('AuthCheck');
     Route::post('/attendantdashstore/{id}', [App\Http\Controllers\attendantdashController::class, 'store'])->name('attendantdashstore');
 
-    Route::get('/attendant/primary/prescription/{id}', [App\Http\Controllers\attendantdashController::class, 'showprimary'])->name('/attendant/primary/patientlist')->middleware('AuthCheck');
+    Route::get('/attendant/primary/prescription/{id}', [App\Http\Controllers\attendantdashController::class, 'showprimary'])->name('/attendant/primary/prescription')->middleware('AuthCheck');
 
     Route::get('/attendant/secondary/prescription/{id}', [App\Http\Controllers\attendantdashController::class,'showsecondary'])->name('/attendant/secondary/patientlist')->middleware('AuthCheck');
 

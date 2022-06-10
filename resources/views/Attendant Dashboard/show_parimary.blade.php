@@ -55,7 +55,7 @@
                             </tbody>
                         </table>
                     </div>
-                    {{ Form::open(array('route' =>'/attendant/morning/done',$patientName->id,'method' => 'post' , 'class' => 'body')) }}
+                    {{ Form::open(array('url' => route('/attendant/primary/prescription', $patientName->id),'method' => 'post' , 'class' => 'body')) }}
                         <p>Dose Track</p>
                         <div class="row clearfix">
                             <div class="col-sm-6">

@@ -49,7 +49,10 @@
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/default.css">
+    <link href="/select2/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="/js/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/f3c805f265.js" crossorigin="anonymous"></script>
+    
 
 </head>
 <body>
@@ -65,8 +68,9 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-2 col-12 my-auto">
-                    <div class="top-logo">
-                        <a href="index.html"><img src="images/logo.png" alt="logo.png"></a>
+                    <div class="top-logo" style="display:inline">
+                        <a href="index.html"><img src="/images/favicon.png" alt="logo.png" style="width: 54px"></a>
+                        <span style="display:inline; font-weight: bold; font-size: 20px;">Good Health</span>
                     </div>
                     <div class="mobile-nav"></div>
                 </div>
@@ -231,7 +235,7 @@
 
 <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
-
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script src="/js/jquery.js"></script>
 
 <script src="/js/bootstrap.bundle.min.js"></script>
@@ -250,7 +254,7 @@
 
 <script src="/js/cube-portfolio.min.js"></script>
 
-<script src="/js/nice-select.min.js"></script>
+<script src="/select2/dist/js/select2.min.js"></script>
 
 <script src="/js/wow.min.js"></script>
 

@@ -23,32 +23,39 @@
 
     <section class="doctors-area doctor-page">
       <div class="container">
-        <div class="row">
-      <form method="get" action="#">
-      <div class="input-group icon before_span">
-          <span class="input-group-addon"> <i class="zmdi zmdi-account"></i> </span>
-          <div class="form-line">
-              <input type="text" class="form-control" name="search" placeholder="Search" value="{{ old('search') }}">
-          </div>
-          <div class="text-danger">@error('search'){{ $message }} @enderror</div>
-      </div>
-      <div class="input-group icon before_span" style="display: inline;">
-          <span class="input-group-addon"> <i class="zmdi zmdi-account"></i> </span>
-          <div class="form-line">
-              <select name="role_id" id="role_id" class="form-control" required >
-              @foreach($departmentall as $department)
-                  <option value="">Select Speciality</option>
-                  <option>{{ $department->dep_name  }}</option>
-              @endforeach
-              </select>
-              <span class="text-danger">@error('role_id'){{ $message }} @enderror</span>
+          <form method="get" action="{{ route('search') }}">
+            @csrf
               
-          </div>
-          <i class="zmdi zmdi-chevron-down" style="position: absolute; top: 8px; right: 28px;"></i>
-      </div>
-
-    </form>
-        </div>
+            <div class="row clearfix">
+              <div class="col-lg-4 col-sm-12">
+                  <div class="form-group">
+                      <div class="form-line selec2-class">
+                        <select name="filter_doc_id"  class="js-example-basic-single">
+                          @foreach($Doctorall as $list)
+                              <option value="">Select Doctor</option>
+                              <option value="{{$list->id}}" {{ Request::get('filter_doc_id') == $list->id ? 'selected' : '' }}">{{ $list->doc_fname }} {{ $list->doc_lname }}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                      
+                  </div>
+              </div>
+              <div class="col-lg-4 col-sm-12">
+                  <div class="form-group">
+                    <div class="form-line">
+                      <select name="filter_depart_id" id="role_id" class="js-example-basic-single" >
+                        @foreach($departmentall as $department)
+                            <option value="">Select Speciality</option>
+                            <option value="{{$department->id}}" {{ Request::get('filter_doc_id') == $department->id ? 'selected' : '' }}">{{ $department->dep_name  }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                      
+                  </div>
+                  <button class="btn btn-sm btn-success" type="submit" >Search</button>
+              </div>
+              </form>
+            </div>
         <div class="row">
           @foreach($Doctorall as $doctors)
           <div class="col-lg-3 col-md-6 col-12 wow fadeInUp" data-wow-delay="0.1s">
@@ -72,7 +79,14 @@
             @endforeach
       </div>
     </section>
+  <style>
+  
+  </style>
+    <script>
 
-    
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+    </script>
 
 @endsection

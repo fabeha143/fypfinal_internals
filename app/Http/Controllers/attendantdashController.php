@@ -34,8 +34,8 @@ class attendantdashController extends Controller
         $query = inpatient_prescription::where([['patient_id','=',$id],['date','=',$current_date]])
         ->get();
         
-        $patientName = patient::where('id',$id)->get();
-
+        $patientName = patient::where('id',$id)->first();
+       
         return view('Attendant Dashboard/show_parimary',compact('query','patientName'));
     }
 

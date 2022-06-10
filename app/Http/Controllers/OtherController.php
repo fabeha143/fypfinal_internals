@@ -7,6 +7,8 @@ use App\Models\assign_shifts;
 use App\Models\attendant_assigns;
 use App\Models\inpatient_prescription;
 use App\Models\employee;
+use App\Models\doctor;
+use App\Models\departments;
 use Illuminate\Http\Request;
 use App\Events\MessageNotification;
 use DB;
@@ -16,6 +18,7 @@ use \Illuminate\Notifications\Notifiable;
 use App\Notifications\dos_reminder;
 use App\Notifications\SlackNotification;
 use Monolog\Handler\Slack\SlackRecord;
+use Illuminate\Support\Str;
 
 
 class OtherController extends Controller
@@ -81,6 +84,17 @@ class OtherController extends Controller
     {
         attendant_assigns::where('id' , $id)->delete();
         return back();
+    }
+    public function search_doctor(Request $request){
+        $query = doctor::all();
+        if($request->filter_doc_id) {
+            $query->where('doc_id', $request->filter_doc_id);
+        }
+        if($request->filter_depart_id) {
+            $query->where('doc_department', $request->filter_depart_id);
+        }
+        $Doctorall = $query;
+        return view('website/doctorweb',compact('Doctorall'));
     }
  
 }

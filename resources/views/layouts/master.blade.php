@@ -62,8 +62,9 @@
         </a> 
     </div>
         <ul class="nav navbar-nav navbar-right">
-                <li ><a href="#" id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown"><span class="badge bg-danger">{{$data->notifications->count()}}</span><i class="zmdi zmdi-notifications"></i></a>
-                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+            <li>
+                <a href="#" id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown"><span class="badge bg-danger">{{$data->notifications->count()}}</span><i class="zmdi zmdi-notifications"></i></a>
+                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
                     @foreach($data->notifications as $notification)
                         @if($data->notifications->count() == null)
                             <ul>
@@ -74,17 +75,12 @@
                                 <li>No Notification Found</li>
                             </ul>
                         @endif
-
                     @endforeach
-                        
-                    
-                       
-
-                    </div>
-                </li>
-                <li><a href="{{ url('/inbox/create')}}" title="Go to Inbox"><i class="zmdi zmdi-email"></i></a></li>
-                <li><a href="{{ url('/profile')}}" title="Go to Profile"><i class="zmdi zmdi-account"></i></a></li>
-                <li><a href="{{ url('/logout') }}"><i class="zmdi zmdi-sign-in"></i></a></li>
+                </div>
+            </li>
+            <li><a href="{{ url('/inbox/create')}}" title="Go to Inbox"><i class="zmdi zmdi-email"></i></a></li>
+            <li><a href="{{ url('/profile')}}" title="Go to Profile"><i class="zmdi zmdi-account"></i></a></li>
+            <li><a href="{{ url('/logout') }}"><i class="zmdi zmdi-sign-in"></i></a></li>
         </ul>
     </div>
 </nav>
