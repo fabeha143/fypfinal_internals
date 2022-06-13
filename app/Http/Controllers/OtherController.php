@@ -85,15 +85,19 @@ class OtherController extends Controller
         attendant_assigns::where('id' , $id)->delete();
         return back();
     }
+    public function doctor_show(){
+        $Doctorall = doctor::all();
+        return view('website/doctorweb',compact('Doctorall'));
+    }
     public function search_doctor(Request $request){
-        $query = doctor::all();
+        $query = doctor::query();
         if($request->filter_doc_id) {
-            $query->where('doc_id', $request->filter_doc_id);
+            $query->where('id', $request->filter_doc_id);
         }
         if($request->filter_depart_id) {
             $query->where('doc_department', $request->filter_depart_id);
         }
-        $Doctorall = $query;
+        $Doctorall = $query->orderBy('id', 'desc')->paginate(10);
         return view('website/doctorweb',compact('Doctorall'));
     }
  

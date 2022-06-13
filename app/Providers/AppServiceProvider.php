@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('patientTotal',patient::all()->count());
             $view->with('appointmentscount',appointments::all()->count());
             $view->with('Doctor',doctor::all()->count());
-            $view->with('Doctorall',doctor::all());
+            $view->with('Doctors',doctor::all());
             $view->with('departmentall',departments::all());
             $view->with('appointmentsall',appointments::where('status','=','pending')->count());
             $view->with('patientTotal',patient::all()->count());

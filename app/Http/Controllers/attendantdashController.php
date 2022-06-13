@@ -61,12 +61,12 @@ class attendantdashController extends Controller
     public function morning_done($id)
     {
         dd($id);
-        $tz = new DateTimeZone('Asia/Kolkata'); 
+        // $tz = new DateTimeZone('Asia/Kolkata'); 
 
-        $all = inpatient_prescription::select('night_time')->get();
-        $dt = new DateTime($all->night_time);
-        $dt->setTimezone($tz);
-        echo $dt->format('Y-m-d H:i:s');
+        // $all = inpatient_prescription::select('night_time')->get();
+        // $dt = new DateTime($all->night_time);
+        // $dt->setTimezone($tz);
+        // echo $dt->format('Y-m-d H:i:s');
         // $time = Carbon::now();
         // dd($time->timestamp);
         
@@ -83,6 +83,17 @@ class attendantdashController extends Controller
         //     else{
         //         echo "Not worked";
         //     }
+        
+    }
+    public function evening_done($id)
+    {
+        inpatient_prescription::where('patient_id',$id)->first();
+        // $prescription->evening_status=true;
+        // $prescription->save();
+        // dd($prescription);
+        return redirect()->back();
+        //$evening_done = inpatient_prescription::where('evening_done',true)
+       
         
     }
     

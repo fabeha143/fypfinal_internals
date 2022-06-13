@@ -29,10 +29,10 @@
             <div class="row clearfix">
               <div class="col-lg-4 col-sm-12">
                   <div class="form-group">
-                      <div class="form-line selec2-class">
+                      <div class="form-line select2-class">
                         <select name="filter_doc_id"  class="js-example-basic-single">
-                          @foreach($Doctorall as $list)
-                              <option value="">Select Doctor</option>
+                          <option value="">Select Doctor</option>
+                          @foreach($Doctors as $list)
                               <option value="{{$list->id}}" {{ Request::get('filter_doc_id') == $list->id ? 'selected' : '' }}">{{ $list->doc_fname }} {{ $list->doc_lname }}</option>
                           @endforeach
                         </select>
@@ -42,18 +42,18 @@
               </div>
               <div class="col-lg-4 col-sm-12">
                   <div class="form-group">
-                    <div class="form-line">
+                    <div class="form-line select2-class">
                       <select name="filter_depart_id" id="role_id" class="js-example-basic-single" >
+                        <option value="">Select Speciality</option>
                         @foreach($departmentall as $department)
-                            <option value="">Select Speciality</option>
                             <option value="{{$department->id}}" {{ Request::get('filter_doc_id') == $department->id ? 'selected' : '' }}">{{ $department->dep_name  }}</option>
                         @endforeach
                       </select>
                     </div>
                       
                   </div>
-                  <button class="btn btn-sm btn-success" type="submit" >Search</button>
-              </div>
+                </div>
+                <button class="btn btn-sm btn-success" type="submit" >Search</button>
               </form>
             </div>
         <div class="row">
@@ -80,7 +80,9 @@
       </div>
     </section>
   <style>
-  
+  .select2-class select{
+    width: 100%;
+  }
   </style>
     <script>
 

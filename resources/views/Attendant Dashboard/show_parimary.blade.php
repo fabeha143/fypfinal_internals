@@ -55,12 +55,34 @@
                             </tbody>
                         </table>
                     </div>
-                    {{ Form::open(array('url' => route('/attendant/primary/prescription', $patientName->id),'method' => 'post' , 'class' => 'body')) }}
+                    {{ Form::open(array('url' => route('/attendant/morning/done', $patientName->id),'method' => 'post' , 'class' => 'body')) }}
                         <p>Dose Track</p>
                         <div class="row clearfix">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     {{ Form::label('morning_time','Morning Dose Time')}}
+                                    <button type="submit" class="btn btn-raised g-bg-cyan">Done</button>
+                                </div>
+                            </div> 
+                        </div>
+                    {{ Form::close() }}
+                    {{ Form::open(array('url' => route('/attendant/evening/done', $patientName->id),'method' => 'post' , 'class' => 'body')) }}
+                        <p>Dose Track</p>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ Form::label('evening_time','Evening Dose Time')}}
+                                    <button type="submit" class="btn btn-raised g-bg-cyan">Done</button>
+                                </div>
+                            </div> 
+                        </div>
+                    {{ Form::close() }}
+                    {{ Form::open(array('url' => route('/attendant/night/done', $patientName->id),'method' => 'post' , 'class' => 'body')) }}
+                        <p>Dose Track</p>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ Form::label('night_time','night Dose Time')}}
                                     <button type="submit" class="btn btn-raised g-bg-cyan">Done</button>
                                 </div>
                             </div> 

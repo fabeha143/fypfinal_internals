@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::view('/home ', 'website/homepage');
 Route::view('/Department ', 'website/departmentweb');
 Route::view('/service ', 'website/serviceweb');
-Route::view('/Doctor ', 'website/doctorweb');
+Route::get('/Doctor', [App\Http\Controllers\OtherController::class,'doctor_show'])->name('Doctor');
+// Route::view('/Doctor ', 'website/doctorweb');
 Route::view('/DoctorDetail ', 'website/doctorwebDetail');
 Route::view('/contactus ', 'website/contactus');
 Route::view('/faq ', 'website/faqWeb');
@@ -137,6 +138,8 @@ Route::get('/', [App\Http\Controllers\loginController::class,'login'])->name('/l
     Route::get('/attendant/secondary/patientlist', [App\Http\Controllers\attendantdashController::class, 'patientList_secondary'])->name('/attendant/secondary/patientlist')->middleware('AuthCheck');
 
     Route::post('/attendant/morning/done/{id}', [App\Http\Controllers\attendantdashController::class, 'morning_done'])->name('/attendant/morning/done')->middleware('AuthCheck');
+    Route::post('/attendant/evening/done/{id}', [App\Http\Controllers\attendantdashController::class, 'evening_done'])->name('/attendant/evening/done')->middleware('AuthCheck');
+    Route::post('/attendant/night/done/{id}', [App\Http\Controllers\attendantdashController::class, 'night_done'])->name('/attendant/night/done')->middleware('AuthCheck');
     
 
     Route::get('/other', [App\Http\Controllers\OtherController::class, 'other'])->name('other');
