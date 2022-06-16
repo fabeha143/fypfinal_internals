@@ -18,7 +18,7 @@ class employee extends Model
     }
     public function routeNotificationForSlack($notification)
     {
-        return 'https://hooks.slack.com/services/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';
+        return 'https://hooks.slack.com/services/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';
     }
     
 }

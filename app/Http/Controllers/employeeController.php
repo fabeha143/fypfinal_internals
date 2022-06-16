@@ -78,6 +78,7 @@ class employeeController extends Controller
             'username'=>$request->username,
             'email'=>$request->email,
             'password'=>Hash::make($request->password),
+            'session_stored' => session('LoggedUser')
         ]);
         return back()->with('success1','Employee Added');
        

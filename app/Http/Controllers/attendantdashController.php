@@ -34,8 +34,8 @@ class attendantdashController extends Controller
         $query = inpatient_prescription::where([['patient_id','=',$id],['date','=',$current_date]])
         ->get();
         
-        $patientName = patient::where('id',$id)->first();
-       
+        $patientName = patient::select('id')->where('id',$id)->first();
+
         return view('Attendant Dashboard/show_parimary',compact('query','patientName'));
     }
 
@@ -55,45 +55,37 @@ class attendantdashController extends Controller
         $query = inpatient_prescription::where([['patient_id','=',$id],['date','=',$current_date]])
         ->get();
         
-        $patientName = patient::select('pat_fname')->where('id',$id)->get();
+        $patientName = patient::select('id')->where('id',$id)->first();
         return view('Attendant Dashboard/show_secondary',compact('query','patientName'));  
     }
-    public function morning_done($id)
+    public function morning_done($id , Request $request)
     {
-        dd($id);
-        // $tz = new DateTimeZone('Asia/Kolkata'); 
-
-        // $all = inpatient_prescription::select('night_time')->get();
-        // $dt = new DateTime($all->night_time);
-        // $dt->setTimezone($tz);
-        // echo $dt->format('Y-m-d H:i:s');
-        // $time = Carbon::now();
-        // dd($time->timestamp);
+        $current_date= date("Y-m-d");
+        inpatient_prescription::where([['patient_id','=',$id],['date','=',$current_date]])->update([
+            'morning_status' => 1,
+        ]);
         
-        
-        //     if($all->night_time == $time){
-        //         echo "dose time";
-        //     }
-        //     elseif($all < $time){
-        //         echo "dose not given";
-        //     }
-        //     elseif($all > $time){
-        //         echo "dose time given";
-        //     }
-        //     else{
-        //         echo "Not worked";
-        //     }
+        return redirect()->back();
         
     }
-    public function evening_done($id)
+    public function evening_done($id , Request $request)
     {
-        inpatient_prescription::where('patient_id',$id)->first();
-        // $prescription->evening_status=true;
-        // $prescription->save();
-        // dd($prescription);
+        $current_date= date("Y-m-d");
+        inpatient_prescription::where([['patient_id','=',$id],['date','=',$current_date]])->update([
+            'evening_status' => 1,
+        ]);
+        
         return redirect()->back();
-        //$evening_done = inpatient_prescription::where('evening_done',true)
-       
+        
+    }
+    public function night_done($id , Request $request)
+    {
+        $current_date= date("Y-m-d");
+        inpatient_prescription::where([['patient_id','=',$id],['date','=',$current_date]])->update([
+            'night_status' => 1,
+        ]);
+        
+        return redirect()->back();
         
     }
     

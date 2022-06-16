@@ -24,11 +24,7 @@
                                     <th>Morning Time</th>
                                     <th>Evening Time</th>
                                     <th>Night Time</th>
-                                    <th>Morning Dose Giving</th>
-                                    <th>Evening Dose Giving</th>
-                                    <th>Night Dose Giving</th>
                                     <th>Comment</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,52 +38,34 @@
                                     <td>{{ $list->morning_time}}</td>
                                     <td>{{ $list->evening_time}}</td>
                                     <td>{{ $list->night_time}}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td>{{ $list->comment}}</td>
+                                    <td>
+                                        
+                                    </td>
                                     <tr>
                                 @endforeach
                             @else
                             <td colspan="14">No Data found!!</td>
                             @endif
-                            </tr>    
+                            </tr> 
+                               
                             </tbody>
                         </table>
+                            {!! Form::open(array('url' => route('/attendant/morning/done', $patientName->id), 'method' => 'post' ,'style' => 'margin-bottom:10px;')) !!}
+                                {!! Form::submit('Morning Dose', array('class' => 'btn btn-sm btn-primary openbutton')) !!}
+                            {!! Form::close() !!}
+
+                            {!! Form::open(array('url' => route('/attendant/evening/done', $patientName->id), 'method' => 'post' ,'style' => 'margin-bottom:10px;')) !!}		
+                                {!! Form::submit('Evening Dose', array('class' => 'btn btn-sm btn-primary openbutton')) !!}
+                    
+                            {!! Form::close() !!}
+
+                            {!! Form::open(array('url' => route('/attendant/night/done',$patientName->id), 'method' => 'post')) !!}		
+                                {!! Form::submit('Night Dose', array('class' => 'btn btn-sm btn-primary openbutton')) !!}
+                    
+                            {!! Form::close() !!}
                     </div>
-                    {{ Form::open(array('url' => route('/attendant/morning/done', $patientName->id),'method' => 'post' , 'class' => 'body')) }}
-                        <p>Dose Track</p>
-                        <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    {{ Form::label('morning_time','Morning Dose Time')}}
-                                    <button type="submit" class="btn btn-raised g-bg-cyan">Done</button>
-                                </div>
-                            </div> 
-                        </div>
-                    {{ Form::close() }}
-                    {{ Form::open(array('url' => route('/attendant/evening/done', $patientName->id),'method' => 'post' , 'class' => 'body')) }}
-                        <p>Dose Track</p>
-                        <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    {{ Form::label('evening_time','Evening Dose Time')}}
-                                    <button type="submit" class="btn btn-raised g-bg-cyan">Done</button>
-                                </div>
-                            </div> 
-                        </div>
-                    {{ Form::close() }}
-                    {{ Form::open(array('url' => route('/attendant/night/done', $patientName->id),'method' => 'post' , 'class' => 'body')) }}
-                        <p>Dose Track</p>
-                        <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    {{ Form::label('night_time','night Dose Time')}}
-                                    <button type="submit" class="btn btn-raised g-bg-cyan">Done</button>
-                                </div>
-                            </div> 
-                        </div>
-                    {{ Form::close() }}
+                    
                 </div>
 
             

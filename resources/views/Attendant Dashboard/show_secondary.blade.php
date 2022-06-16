@@ -17,18 +17,14 @@
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                             <thead>
                                 <tr>
-                                    <th>Medicine</th>
+                                <th>Medicine</th>
                                     <th>Dose Frequency</th>
                                     <th>Unit</th>
                                     <th>Date</th>
                                     <th>Morning Time</th>
                                     <th>Evening Time</th>
                                     <th>Night Time</th>
-                                    <th>Morning Dose Giving</th>
-                                    <th>Evening Dose Giving</th>
-                                    <th>Night Dose Giving</th>
                                     <th>Comment</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,10 +38,8 @@
                                     <td>{{ $list->morning_time}}</td>
                                     <td>{{ $list->evening_time}}</td>
                                     <td>{{ $list->night_time}}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td>{{ $list->comment}}</td>
+                                    
                                     <tr>
                                 @endforeach
                             @else
@@ -54,18 +48,21 @@
                             </tr>    
                             </tbody>
                         </table>
+                    
+                    {!! Form::open(array('url' => route('/attendant/morning/done', $patientName->id), 'method' => 'post' ,'style' => 'margin-bottom:10px;')) !!}
+                                {!! Form::submit('Morning Dose', array('class' => 'btn btn-sm btn-primary openbutton')) !!}
+                            {!! Form::close() !!}
+
+                            {!! Form::open(array('url' => route('/attendant/evening/done', $patientName->id), 'method' => 'post' ,'style' => 'margin-bottom:10px;')) !!}		
+                                {!! Form::submit('Evening Dose', array('class' => 'btn btn-sm btn-primary openbutton')) !!}
+                    
+                            {!! Form::close() !!}
+
+                            {!! Form::open(array('url' => route('/attendant/night/done',$patientName->id), 'method' => 'post')) !!}		
+                                {!! Form::submit('Night Dose', array('class' => 'btn btn-sm btn-primary openbutton')) !!}
+                    
+                            {!! Form::close() !!}
                     </div>
-                    {{ Form::open(array('url' =>  '/attendant/morning/done','method' => 'post' , 'class' => 'body')) }}
-                        <p>Dose Track</p>
-                        <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    {{ Form::label('morning_time','Morning Dose Time')}}
-                                    <button type="submit" class="btn btn-raised g-bg-cyan">Done</button>
-                                </div>
-                            </div> 
-                        </div>
-                    {{ Form::close() }}
                 </div>
 
             
