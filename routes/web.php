@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //Website Routes
-Route::view('/home ', 'website/homepage');
+Route::view('/ ', 'website/homepage');
 Route::view('/Department ', 'website/departmentweb');
 Route::view('/service ', 'website/serviceweb');
 Route::get('/Doctor', [App\Http\Controllers\OtherController::class,'doctor_show'])->name('Doctor');
@@ -50,7 +50,8 @@ Route::post('/login/check',[App\Http\Controllers\loginController::class,'check']
 
     Route::get('/admin/dashboard', [App\Http\Controllers\adminDashController::class,'index'])->name('/admin/dashboard')->middleware('AuthCheck');
 
-Route::get('/', [App\Http\Controllers\loginController::class,'login'])->name('/login')->middleware('authbackcheck');
+Route::get('/login', [App\Http\Controllers\loginController::class,'login'])->name('/login')->middleware('authbackcheck');
+
 
     Route::get('/logout', [App\Http\Controllers\loginController::class,'logout'])->name('logout');
     Route::resource('patient','PatientController')->middleware('AuthCheck');

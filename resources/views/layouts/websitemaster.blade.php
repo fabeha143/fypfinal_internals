@@ -134,7 +134,8 @@
                                     <div class="footer-about">
 
                                         <div class="footer-logo">
-                                            <a href="index.html"><img src="/images/logo-white.png" alt="footer-logo"></a>
+                                            <a href="index.html"><img src="/images/icons/icon-152x152.png" alt="footer-logo" style="width: 70px !important;"></a>
+                                            <span style="display: inline;font-weight: bold;font-size: 20px;color:white;">Good Health</span>
                                         </div>
                                         <div class="footer-a-content">
                                             <p>We are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
@@ -215,7 +216,7 @@
 
                     <div class="col-lg-6 col-md-7 col-12">
                         <div class="c-left-content">
-                            <p>&copy; Copyright 2021 <a href="#">MEDICARE</a> All rights reserved.</p>
+                            <p>&copy; Copyright 2021 <a href="#">Good Health</a> All rights reserved.</p>
                         </div>
                     </div>
 

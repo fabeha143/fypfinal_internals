@@ -3,8 +3,8 @@
 @section('websitecontent')
 
 
-<section class="hero-area">
-    <div class="hero-slider owl-carousel owl-theme">
+    <section class="hero-area">
+        <div class="hero-slider owl-carousel owl-theme">
         
             <div style="display: block; background-image:url('/images/hero-slider/slider-1.jpg')">
                 <div class="single-slider" style="background-image:url('/images/hero-slider/slider-1.jpg')">
