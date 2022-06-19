@@ -44,23 +44,25 @@
     <link rel="stylesheet" href="/css/datepicker.css">
 
     <link rel="stylesheet" href="/css/fontawesome.min.css">
+    <link href="/select2/dist/css/select2.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="/css/icofont.css">
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#6777ef"/>
+    <link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
     <link rel="stylesheet" href="/css/default.css">
-    <link href="/select2/dist/css/select2.min.css" rel="stylesheet" />
     <script src="/js/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/f3c805f265.js" crossorigin="anonymous"></script>
     
-
 </head>
 <body>
-<!-- <div class="preloader">
+ <div class="preloader">
     <div class="loader-container">
         <div class="loader"></div>
     </div>
-</div> -->
+</div> 
 
     @include($layoutwebnav)
     <header class="header">
@@ -68,9 +70,9 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-2 col-12 my-auto">
-                    <div class="top-logo" style="display:inline">
-                        <a href="index.html"><img src="/images/favicon.png" alt="logo.png" style="width: 54px"></a>
-                        <span style="display:inline; font-weight: bold; font-size: 20px;">Good Health</span>
+                     <div class="top-logo" style="width: 100%;">
+                        <a href="{{ url('/') }}"><img  style="height:53px; width:70px;" src="images/favicon.png" alt="logo.png"></a>
+                        <span style="font-size:17px; font-weight:600; font-family:'Barlow', sans-serif;">Good Health</span>
                     </div>
                     <div class="mobile-nav"></div>
                 </div>
@@ -83,7 +85,7 @@
                                 <div class="nav-item">
 
                                     <ul class="nav-menu mobile-menu navigation">
-                                        <li class="active"><a href="{{ url('/home') }}">Home</a>
+                                        <li class="active"><a href="{{ url('/') }}">Home</a>
                                         </li>
                                         <li><a href="{{ url('/Department') }}">Department</a>
                                         </li>
@@ -95,13 +97,12 @@
                                         <li><a href="{{ url('/faq') }}">Faq</a>
                                         </li>
                                         <li><a href="{{ url('/contactus') }}">Contact Us</a></li>
+                                        <li><a href="{{ url('/login') }}">Admin Login</a></li>
 
                                     </ul>
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="h-menu-right">
                             <a href="{{ url('/Appointment') }}" class="theme-btn">Appointment</a>
                         </div>
@@ -134,7 +135,7 @@
                                     <div class="footer-about">
 
                                         <div class="footer-logo">
-                                            <a href="index.html"><img src="/images/icons/icon-152x152.png" alt="footer-logo" style="width: 70px !important;"></a>
+                                        <a href="index.html"><img src="/images/icons/icon-152x152.png" alt="footer-logo" style="width: 70px !important;"></a>
                                             <span style="display: inline;font-weight: bold;font-size: 20px;color:white;">Good Health</span>
                                         </div>
                                         <div class="footer-a-content">
@@ -232,11 +233,20 @@
     </div>
 
 </footer>
+<style>
+    @media only screen and (max-width: 767px) {
+    .mobile-nav {
+      position: relative;
+      z-index: 5000;
+      display: block;
+    }
+    }
+</style>
 
 
 <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
 <script src="/js/jquery.js"></script>
 
 <script src="/js/bootstrap.bundle.min.js"></script>
@@ -255,8 +265,8 @@
 
 <script src="/js/cube-portfolio.min.js"></script>
 
+<script src="/js/nice-select.min.js"></script>
 <script src="/select2/dist/js/select2.min.js"></script>
-
 <script src="/js/wow.min.js"></script>
 
 <script src="/js/jquery.slicknav.min.js"></script>

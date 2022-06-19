@@ -17,7 +17,7 @@
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have
                                     suffered <br> alteration in some form, by injected humour, or randomised words.</p>
                                     <div class="hero-button">
-                                        <a href="appoinment.html" class="theme-btn">Appointment</a>
+                                        <a href="{{ url('/Appointment') }}" class="theme-btn">Appointment</a>
                                         <a href="Contact.html" class="theme-btn primary">Learn More</a>
                                     </div>
                                 </div>
@@ -36,7 +36,7 @@
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have
                                     suffered <br> alteration in some form, by injected humour, or randomised words.</p>
                                 <div class="hero-button">
-                                    <a href="appoinment.html" class="theme-btn">Appointment</a>
+                                    <a href="{{ url('/Appointment') }}" class="theme-btn">Appointment</a>
                                     <a href="Contact.html" class="theme-btn primary">Learn More</a>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have
                                     suffered <br> alteration in some form, by injected humour, or randomised words.</p>
                                 <div class="hero-button">
-                                    <a href="appoinment.html" class="theme-btn">Appointment</a>
+                                    <a href="{{ url('/Appointment') }}" class="theme-btn">Appointment</a>
                                     <a href="#" class="theme-btn primary">Learn More</a>
                                 </div>
                             </div>

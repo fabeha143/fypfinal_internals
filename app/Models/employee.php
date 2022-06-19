@@ -10,6 +10,7 @@ class employee extends Model
 {
     use HasFactory;
     use Notifiable;
+    
     public $timestamps = false;
     protected $fillable = ['emp_fname','emp_lname','emp_gender','emp_joining_date','emp_phone','emp_address','username','email','password','role'];
     public function patients()
@@ -18,7 +19,7 @@ class employee extends Model
     }
     public function routeNotificationForSlack($notification)
     {
-        return 'https://hooks.slack.com/services/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';
+        return 'https://hooks.slack.com/services/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';
     }
     
 }

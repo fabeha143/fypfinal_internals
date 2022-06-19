@@ -85,14 +85,14 @@
                   <i class="fas fa-map-marker-alt"></i>
                   <div class="single-c-content">
                     <h5>Address</h5>
-                    <span>2593 Ross Street, New York, USA</span>
+                    <span>PAF KIET UNIVERSITY, Karachi, Pakistan</span>
                   </div>
                 </div>
                 <div class="single-c-details">
                   <i class="fas fa-phone"></i>
                   <div class="single-c-content">
                     <h5>Phone</h5>
-                    <span>+1 123 456 7894</span>
+                    <span>021-25292251</span>
                   </div>
                 </div>
 

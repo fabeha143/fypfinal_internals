@@ -16,7 +16,7 @@ class authbackcheck
      */
     public function handle(Request $request, Closure $next)
     {
-        if(session()->has('LoggedUser') and ($request->path() == '/')){
+        if(session()->has('LoggedUser') and ($request->path() == 'login')){
             return redirect()->back();
         }
         return $next($request)->header('Cache-Control','no-cache, no-store, max-age=0, must-revalidate')

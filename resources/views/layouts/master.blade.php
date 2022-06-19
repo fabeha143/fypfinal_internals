@@ -23,7 +23,7 @@
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#6777ef"/>
 <link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
-@laravelPWA
+
 
 </head>
 
@@ -43,6 +43,7 @@
         <p>Please wait...</p>
     </div>
 </div> -->
+
 
 <!-- Overlay For Sidebars -->
 <div class="overlay"></div>
@@ -65,17 +66,15 @@
             <li>
                 <a href="#" id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown"><span class="badge bg-danger">{{$data->notifications->count()}}</span><i class="zmdi zmdi-notifications"></i></a>
                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                    <ul>
                     @foreach($data->notifications as $notification)
                         @if($data->notifications->count() == null)
-                            <ul>
-                                <li><a>Please give medicines to Patient {{ $notification->data['type'][0]['patient_id'] }}</a></li>
-                            </ul> 
+                            <li><a>Please give medicines to Patient {{ $notification->data['type'][0]['patient_id'] }}</a></li>
                         @else
-                            <ul>
-                                <li>No Notification Found</li>
-                            </ul>
+                            <li>No Notification Found</li>
                         @endif
                     @endforeach
+                    </ul> 
                 </div>
             </li>
             <li><a href="{{ url('/inbox/create')}}" title="Go to Inbox"><i class="zmdi zmdi-email"></i></a></li>

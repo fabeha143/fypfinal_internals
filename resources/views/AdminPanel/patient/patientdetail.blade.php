@@ -63,7 +63,7 @@
                                         <td>{{ $list->pat_symptoms}}</td>
                                         <td>{{ $list->pat_email}}</td>
                                         <td>{{ $list->pat_address}}</td>
-                                        <td>{{ $list->ward}}</td>
+                                        <td>{{ $list->wards->ward_name}}</td>
                                         <td>{{ $list->pat_date_of_birth}}</td>
                                         <td>{{ $list->doctors->doc_fname}}</td>
                                         <td>{{ $list->departments->dep_name}}</td>

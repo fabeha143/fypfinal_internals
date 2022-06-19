@@ -16,12 +16,13 @@ class dos_reminder extends Notification
      *
      * @return void
      */
-    public $data1;
+    public $new;
     
 
     public function __construct($new)
     {
-        $this->data1 = $new;
+        $this->new = $new;
+        
         
     }
 
@@ -54,7 +55,7 @@ class dos_reminder extends Notification
     public function toArray($notifiable)
     {
         return [
-            'type'=>$this->data1
+            'type'=>$this->new
         ];
     }
    

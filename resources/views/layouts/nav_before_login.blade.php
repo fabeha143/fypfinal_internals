@@ -4,8 +4,9 @@
             <div class="row">
             <div class="col-lg-4 col-12">
                 <ul class="top-link">
-                    <li><a href="{{ url('/loginpatient') }}">Login</a></li>
-                    <li><a href="{{ url('/registerw') }}">Register</a></li>
+                    <li><a href="{{ url('/loginpatient') }}">User Login</a></li>
+                    <li><a href="{{ url('/registerw') }}">User Register</a></li>
+                    <li><a href="{{ url('/Appointment') }}">Appointment</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-8 col-12">

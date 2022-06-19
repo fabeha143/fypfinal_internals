@@ -34,15 +34,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                    @if(count($medicines))
-                                        @foreach($medicines as $list)
+                                @if(count($medicines))
+                                    @foreach($medicines as $list)
+                                        <tr>
                                             
-                                                <td>{{ $list->med_name}}</td>
-                                                <td>{{ $list->med_company}}</td>
-                                                <td>{{ $list->med_expiry}}</td>
-                                                <td>{{ $list->medicines_category->med_cat_name}}</td>
-                                                <td class="d-flex justify-content-center">
+                                            <td>{{ $list->med_name}}</td>
+                                            <td>{{ $list->med_company}}</td>
+                                            <td>{{ $list->med_expiry}}</td>
+                                            <td>{{ $list->medicines_category->med_cat_name}}</td>
+                                            <td class="d-flex justify-content-center">
                                                 {!! Form::open(array('url' => route('medicine.edit', ['medicine' => $list->id]), 'method' => 'get')) !!}		
                                                 {!! Form::submit('Edit', array('class' => 'btn btn-large btn-primary openbutton')) !!}
                                                 {!! Form::close() !!}
@@ -50,16 +50,14 @@
                                                 {!! Form::open(array('url' => route('medicine.destroy', ['medicine' => $list->id]), 'method' => 'delete')) !!}		
                                                 {!! Form::submit('Delete', array('class' => 'btn btn-large btn-danger openbutton')) !!}
                                         
-                                            {!! Form::close() !!}
+                                                {!! Form::close() !!}
 
                                             </td>
-                                        
+                                    
+                                        </tr>
                                             
                                         @endforeach
                                     @endif
-                                            
-                                </tr>
-                                
                             </tbody>
                         </table>
                     </div>

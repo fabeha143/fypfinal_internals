@@ -5,6 +5,7 @@
                     <ul class="top-link">
                         <li><a href="#">{{$logeduser->name}}</a></li>
                         <li><a href="{{url('/logoutweb')}}">Logout</a></li>
+                        <li><a href="{{ url('/Appointment') }}">Appointment</a><li>
                     </ul>
                 </div>
                 <div class="col-lg-8 col-12">

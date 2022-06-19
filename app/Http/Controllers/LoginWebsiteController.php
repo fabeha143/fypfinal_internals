@@ -51,7 +51,7 @@ class LoginWebsiteController extends Controller
 
             if(Hash::check($request->password, $patientfirst->password)){
                $request->session()->put('LoggedUserweb',$patientfirst->id);
-               return redirect('/home');
+               return redirect('/');
             }
             else{
                 return back()->with('fail','Incorrect Password');

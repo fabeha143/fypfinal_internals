@@ -27,11 +27,23 @@ class Kernel extends ConsoleKernel
     {
         
         $schedule->call(function(){
-            $morning_time = inpatient_prescription::whereRaw('morning_time + INTERVAL 5 MINUTE <= CURRENT_TIME() AND date = CURRENT_DATE AND morning_status = 0')->get();
+            $morning_time = inpatient_prescription::whereRaw('morning_time + INTERVAL 5 MINUTE <= CURRENT_TIME() AND date = CURRENT_DATE AND morning_status = 0')
+            ->join('patients','patients.id','inpatient_prescriptions.patient_id')
+            ->join('departments','departments.id','inpatient_prescriptions.department_id')
+            ->join('wards','wards.id','inpatient_prescriptions.ward_id')
+            ->get();
 
-            $evening_time = inpatient_prescription::whereRaw('evening_time + INTERVAL 5 MINUTE <= CURRENT_TIME() AND date = CURRENT_DATE AND evening_status = 0')->get();
+            $evening_time = inpatient_prescription::whereRaw('evening_time + INTERVAL 5 MINUTE <= CURRENT_TIME() AND date = CURRENT_DATE AND evening_status = 0')
+            ->join('patients','patients.id','inpatient_prescriptions.patient_id')
+            ->join('departments','departments.id','inpatient_prescriptions.department_id')
+            ->join('wards','wards.id','inpatient_prescriptions.ward_id')
+            ->get();
 
-            $night_time = inpatient_prescription::whereRaw('night_time + INTERVAL 5 MINUTE <= CURRENT_TIME() AND date = CURRENT_DATE AND night_status = 0')->get();
+            $night_time = inpatient_prescription::whereRaw('night_time + INTERVAL 5 MINUTE <= CURRENT_TIME() AND date = CURRENT_DATE AND night_status = 0')
+            ->join('patients','patients.id','inpatient_prescriptions.patient_id')
+            ->join('departments','departments.id','inpatient_prescriptions.department_id')
+            ->join('wards','wards.id','inpatient_prescriptions.ward_id')
+            ->get();
 
             if($morning_time->count()!=0){
                 $user1 = employee::select('employees.id')->join('attendant_assigns','attendant_assigns.attendant_primary','=','employees.id')->join('inpatient_prescriptions','attendant_assigns.ward','=','inpatient_prescriptions.ward_id')->first();

@@ -56,17 +56,15 @@
             <li>
                 <a href="#" id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown"><span class="badge bg-danger">{{$data->notifications->count()}}</span><i class="zmdi zmdi-notifications"></i></a>
                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                    @foreach($data->notifications as $notification)
+                    <ul>
                         @if($data->notifications->count() != null)
-                            <ul>
-                                <li><a>Please give medicines to Patient {{ $notification->data['type'][0]['patient_id'] }}</a></li>
-                            </ul> 
+                            @foreach($data->notifications as $notification)
+                                <li><a>Please give medicines to Patient {{ $notification->data['type'][0]['patient_id'] }} name {{ $notification->data['type'][0]['pat_fname'] }} {{ $notification->data['type'][0]['pat_lname'] }} in ward {{ $notification->data['type'][0]['ward_name'] }} in department {{ $notification->data['type'][0]['dep_name'] }}</a></li>
+                            @endforeach
                         @else
-                            <ul>
-                                <li>No Notification Found</li>
-                            </ul>
+                            <li>No Notification Found</li>
                         @endif
-                    @endforeach
+                    </ul>
                 </div>
             </li>
                 <li><a href="{{ url('/inbox/create')}}" title="Go to Inbox"><i class="zmdi zmdi-email"></i></a></li>

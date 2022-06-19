@@ -53,9 +53,15 @@
                       
                   </div>
                 </div>
-                <button class="btn btn-sm btn-success" type="submit" >Search</button>
-              </form>
-            </div>
+                
+              </div>
+              <div class="row clearfix">
+                  <div class="col-lg-4 col-sm-12">
+                    <button class="btn btn-sm btn-success" type="submit" >Search</button>
+                  </div>
+
+              </div>
+            </form>
         <div class="row">
           @foreach($Doctorall as $doctors)
           <div class="col-lg-3 col-md-6 col-12 wow fadeInUp" data-wow-delay="0.1s">

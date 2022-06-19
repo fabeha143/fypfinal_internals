@@ -45,7 +45,7 @@ class SlackNotification extends Notification
         return (new SlackMessage)
         ->from('Admin',':adult')
         ->warning()
-        ->content('Please give dose to Patient '. $this->data[0]['patient_id']);
+        ->content('Please give dose to Patient id '. $this->data[0]['patient_id'] . ' name '.$this->data[0]['pat_fname'].' '.$this->data[0]['pat_lname'].' ward '.$this->data[0]['ward_name'].' in department '.$this->data[0]['dep_name']);
         
        
     }

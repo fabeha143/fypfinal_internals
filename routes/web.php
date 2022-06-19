@@ -2,6 +2,13 @@
 
 use App\Events\MessageNotification;
 use Illuminate\Support\Facades\Route;
+use App\Models\inpatient_prescription;
+use App\Models\employee;
+use App\Notifications\dos_reminder;
+use App\Notifications\SlackNotification;
+use Illuminate\Notifications\Messages\SlackMessage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 
 /*
 |--------------------------------------------------------------------------
@@ -155,6 +162,22 @@ Route::get('/login', [App\Http\Controllers\loginController::class,'login'])->nam
     // Route::get('/event', function(){
     //     event(new MessageNotification('This is Message'));
     // });
-    // Route::get('/listen', function(){
-    //    return view('listen');
+    //  Route::get('/listen', function(){
+    //     $night_time = inpatient_prescription::whereRaw('night_time + INTERVAL 5 MINUTE <= CURRENT_TIME() AND date = CURRENT_DATE AND night_status = 0')
+    //         ->join('patients','patients.id','inpatient_prescriptions.patient_id')
+    //         ->join('departments','departments.id','inpatient_prescriptions.department_id')
+    //         ->join('wards','wards.id','inpatient_prescriptions.ward_id')
+    //         ->get();
+    //         if($night_time->count()!=0){
+    //             $user1 = employee::select('1')->join('attendant_assigns','attendant_assigns.attendant_primary','=','employees.id')->join('inpatient_prescriptions','attendant_assigns.ward','=','inpatient_prescriptions.ward_id')->first();
+    
+    //             $user2 = employee::select('employees.id')->join('attendant_assigns','attendant_assigns.attendant_secondary','=','employees.id')->join('inpatient_prescriptions','attendant_assigns.ward','=','inpatient_prescriptions.ward_id')->first();
+
+
+    //             $new = $night_time;
+    //             $user1->notify(new dos_reminder($new));
+    //             $user2->notify(new dos_reminder($new));
+    //             Notification::send($user1, new SlackNotification($new));
+    //             event(new MessageNotification('Night time query executed'));
+    //         }
     // });

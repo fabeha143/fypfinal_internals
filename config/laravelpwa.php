@@ -5,7 +5,7 @@ return [
     'manifest' => [
         'name' => env('APP_NAME', 'Good Health'),
         'short_name' => 'GH',
-        'start_url' => "https://goodhealth.thetechbond.com/login",
+        'start_url' => "http://127.0.0.1:8000",
         'background_color' => '#ffffff',
         'theme_color' => '#000000',
         'display' => 'standalone',
